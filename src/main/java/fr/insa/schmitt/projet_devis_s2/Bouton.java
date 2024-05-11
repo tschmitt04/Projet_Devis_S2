@@ -32,59 +32,66 @@ public class Bouton {
        /*Création du bouton pièce, au clic deroulement d'autre boutton lié a la nature de la piece,
         puis définition du texte d'aide pour selectionner un coin afin de former la pièce */
        
-        Button nouvellepièce = creationbouton("Pièce", largeur * 2 / 3, 40, () -> {
+        Button nouvellepièce = creationbouton("Pièce", 20, 65, () -> {
             usage = Choix("Choisir l'usage de la pièce",
-                    "Choisissez l'usage de la pièce :", "Chambre", "Salle de bain", "Cuisine", "Couloir","Toilette","Salon","Bureau");
+                    "Choisissez l'usage de la pièce :", 
+                    "Chambre", 
+                    "Salle de bain", 
+                    "Cuisine", 
+                    "Couloir",
+                    "Toilette",
+                    "Salon",
+                    "Bureau");
             piece = true;
             Interface.premierCoin = null;
             Interface.aide.setText("Veuillez sélectionner un coin");
         });
         boutons.add(nouvellepièce);
         nouvellepièce.setPrefWidth(largeur/10);
-        nouvellepièce.setPrefHeight(10);
+        nouvellepièce.setPrefHeight(15);
         
         //Création du boutons "sauvegarde" lié directement à la sauvegarde du devis (classe Sauvegarde
         
         Sauvegarde svg = new Sauvegarde();
-        Button sauvegarder = creationbouton("Sauvegarder", largeur * 2 / 3, 100, () -> {
+        Button sauvegarder = creationbouton("Sauvegarder", largeur-200, hauteur-75, () -> {
             svg.ecriture("sauvegarde.txt");
         });
         boutons.add(sauvegarder);
         sauvegarder.setPrefWidth(largeur/10);
-        sauvegarder.setPrefHeight(10);
+        sauvegarder.setPrefHeight(15);
         
       
         //Création du bouton "ouverture" et affichage une fois toutes les pièces créées, au clic deroulement d'autre boutton lié a la nature des ouvertures*/
         
-        Button ouverturebouton = creationbouton("Ouverture", largeur * 2 / 3, 40, () -> {
+        Button ouverturebouton = creationbouton("Ouverture", 20, 65, () -> {
             ouverture = Choix("Choisir le type d'ouverture",
                     "Choisissez le type d'ouverture : ", "Valider les ouvertures","Porte", "Fenêtre");
             ouv = true;
         });
         boutons.add(ouverturebouton);
         ouverturebouton.setPrefWidth(largeur/10);
-        ouverturebouton.setPrefHeight(10);
+        ouverturebouton.setPrefHeight(15);
         
         //Création du bouton "revêtement", au clic deroulement d'autre boutton lié a type de revêtement et type de surface
         
-        Button boutrevetement = creationbouton("Revêtement", largeur * 2 / 3, 40, () -> {
+        Button boutrevetement = creationbouton("Revêtement", 20, 65, () -> {
             surfacerev = Choix("Choisir la surface à revêtir",
                     "Choisir la surface à revêtir :", "Sol", "Mur Intérieur", "Mur Extérieur", "Plafond");
             typerev(surfacerev);
         });
         boutons.add(boutrevetement);
         boutrevetement.setPrefWidth(largeur/10);
-        boutrevetement.setPrefHeight(10);
+        boutrevetement.setPrefHeight(15);
 
         /*Affichage des boutons d'incrément d'étage (un bouton +, -, pour passer d'un étage à un autre) 
         en bas à droite de l'interface graphqiue de la pièce*/
         
-        Button etageplus = creationbouton("+", largeur * 2 / 3 - 45, hauteur - 50, () -> {
+        Button etageplus = creationbouton("+", largeur * 2 / 3 - 45, hauteur - 75, () -> {
             Devis.etageSuivant(largeur, hauteur);
         });
         boutons.add(etageplus);
 
-        Button etagemoins = creationbouton("-", largeur * 2 / 3 - 150, hauteur - 50, () -> {
+        Button etagemoins = creationbouton("-", largeur * 2 / 3 - 150, hauteur - 75, () -> {
             Devis.etagePrecedant();
         });
         boutons.add(etagemoins);

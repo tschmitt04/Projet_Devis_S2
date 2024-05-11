@@ -167,27 +167,42 @@ public class Devis extends Application {
     public static void creerEtage(int idetage,double largeur, double hauteur) {
         Etage newEtage = new Etage(idetage,1);
         
-        Coin ch = new Coin(Coin.getLastIdcoin(),largeur*2/3, 0,newEtage.getIdetage());
-        Coin cb = new Coin(Coin.getLastIdcoin(),largeur*2/3, hauteur,newEtage.getIdetage());
+        Coin ch = new Coin(Coin.getLastIdcoin(),largeur*1/4-30, 0,newEtage.getIdetage());
+        Coin cb = new Coin(Coin.getLastIdcoin(),largeur*1/4-30, hauteur,newEtage.getIdetage());
         
-        Coin coins1 = new Coin(Coin.getLastIdcoin(),50, 50,newEtage.getIdetage());
-        Coin coins2 = new Coin(Coin.getLastIdcoin(),largeur*2/3-100, 50,newEtage.getIdetage());
-        Coin coins3 = new Coin(Coin.getLastIdcoin(),largeur*2/3-100, hauteur-200,newEtage.getIdetage());
-        Coin coins4 = new Coin(Coin.getLastIdcoin(),50, hauteur-200,newEtage.getIdetage());
-        newEtage.getCoin().add(ch);newEtage.getCoin().add(cb);newEtage.getCoin().add(coins1);newEtage.getCoin().add(coins2);newEtage.getCoin().add(coins3);newEtage.getCoin().add(coins4);
+        Coin ch1 = new Coin(Coin.getLastIdcoin(),largeur*1/4-30, hauteur*1/3,newEtage.getIdetage());
+        Coin cb1 = new Coin(Coin.getLastIdcoin(),0, hauteur*1/3,newEtage.getIdetage());
+        
+        Coin coins1 = new Coin(Coin.getLastIdcoin(),largeur*1/4, 50,newEtage.getIdetage());
+        Coin coins2 = new Coin(Coin.getLastIdcoin(),largeur-50, 50,newEtage.getIdetage());
+        Coin coins3 = new Coin(Coin.getLastIdcoin(),largeur-50, hauteur-100,newEtage.getIdetage());
+        Coin coins4 = new Coin(Coin.getLastIdcoin(),largeur*1/4, hauteur-100,newEtage.getIdetage());
+        newEtage.getCoin().add(ch);
+        newEtage.getCoin().add(cb);
+        newEtage.getCoin().add(coins1);
+        newEtage.getCoin().add(coins2);
+        newEtage.getCoin().add(coins3);
+        newEtage.getCoin().add(coins4);
         //creation du terrain de base au RDC
         if (idetage ==0){
             Mur line = new Mur(Mur.getLastIdmur(),ch,cb,newEtage.getIdetage(),new Revetement(Revetement.getLastIdrev()," ",1,0,0,0));
+            Mur line1 = new Mur(Mur.getLastIdmur(),ch1,cb1,newEtage.getIdetage(),new Revetement(Revetement.getLastIdrev()," ",1,0,0,0));
             Mur murs1 = new Mur(Mur.getLastIdmur(),coins1, coins2,newEtage.getIdetage(),new Revetement(Revetement.getLastIdrev()," ",1,0,0,0));
             Mur murs2 = new Mur(Mur.getLastIdmur(),coins2, coins3,newEtage.getIdetage(),new Revetement(Revetement.getLastIdrev()," ",1,0,0,0));
             Mur murs3 = new Mur(Mur.getLastIdmur(),coins3, coins4,newEtage.getIdetage(),new Revetement(Revetement.getLastIdrev()," ",1,0,0,0));
             Mur murs4 = new Mur(Mur.getLastIdmur(),coins4, coins1,newEtage.getIdetage(),new Revetement(Revetement.getLastIdrev()," ",1,0,0,0));
             newEtage.getRevetement().add(line.getRevetement());
+            newEtage.getRevetement().add(line1.getRevetement());
             newEtage.getRevetement().add(murs1.getRevetement());
             newEtage.getRevetement().add(murs2.getRevetement());
             newEtage.getRevetement().add(murs3.getRevetement());
             newEtage.getRevetement().add(murs4.getRevetement());
-            newEtage.getMur().add(line);newEtage.getMur().add(murs1);newEtage.getMur().add(murs2);newEtage.getMur().add(murs3);newEtage.getMur().add(murs4);
+            newEtage.getMur().add(line);
+            newEtage.getMur().add(murs1);
+            newEtage.getMur().add(murs2);
+            newEtage.getMur().add(murs3);
+            newEtage.getMur().add(murs4);
+            newEtage.getMur().add(line1);
             newEtage.setEtape(0);
             //Pour les étages suivants, on récupère les carractéristique de l'etage précedent (terrain et ligne et cage d'escalier) pour les créer de nouveau (meme attributs) dans le nouvel etage 
 

@@ -38,14 +38,9 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundSize;
-import javafx.util.Duration;
 /*import javax.swing.*;
 import java.awt.*;*/
 import java.util.ArrayList;
-import javafx.animation.FadeTransition;
-import javafx.scene.Scene;
-import javafx.scene.layout.StackPane;
-import javafx.scene.text.Text;
 
 
 
