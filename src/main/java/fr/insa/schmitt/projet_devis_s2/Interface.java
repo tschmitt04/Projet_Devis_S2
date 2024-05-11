@@ -8,9 +8,14 @@ package fr.insa.schmitt.projet_devis_s2;
  *
  * @author Elève
  */
+import static fr.insa.schmitt.projet_devis_s2.Devis.primaryStage;
+import static fr.insa.schmitt.projet_devis_s2.Interface.aide;
+import static fr.insa.schmitt.projet_devis_s2.Interface.aide4;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Optional;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.beans.value.ChangeListener;
 import javafx.scene.input.MouseEvent;
 import javafx.event.EventHandler;
@@ -18,7 +23,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -28,16 +32,35 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundSize;
+import javafx.util.Duration;
+/*import javax.swing.*;
+import java.awt.*;*/
+import java.util.ArrayList;
+import javafx.animation.FadeTransition;
+import javafx.scene.Scene;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
+
+
+
+
+
 
 
 public final class Interface extends Pane implements EventHandler<MouseEvent> {
     
     public static Label aide;
     public static Label aide2;
+    public static Label aide3;
+    public static Label aide4;
     private final Label devis;
     private final Label devisetage;
-    Image image = new Image("file:legende.png");
-    
     public Etage etage;
     public double largeur;
     public double hauteur;
@@ -46,8 +69,9 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
     public static Coin premierCoin=null; 
     private Coin selectedCoin = null;
     static final ArrayList<Interface> interfaces = new ArrayList<>(Devis.getnbetage());
-    
-    private final ImageView imageView = new ImageView(image);
+    private final ImageView imageView = new ImageView("file:grue.jpg");
+    Image image = new Image("file:grue.jpg");
+    //file:legende.png
     
     //declare l'interface pour un etage spécifique
     public Interface(Etage etage, double largeur, double hauteur) {
@@ -57,11 +81,23 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
         Bouton.creationboutons(largeur, hauteur);
         aide=new Label();
         aide2=new Label();
+        aide3=new Label();
+        aide4=new Label();
         devis=new Label();
         devisetage=new Label();
         setOnMouseClicked(this);
         redraw();
         interfaces.add(this);
+        
+
+    // Ajoutez les lignes pour définir l'image d'arrière-plan
+    
+    Image grue = new Image("file:grue.jpg");
+        BackgroundImage backgroundImage = new BackgroundImage(grue, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+        Background background = new Background(backgroundImage);
+        this.setBackground(background);
+        
+        
     }
     
     //Méthodes permettant d'actualiser les attributs des différents objets 
@@ -145,17 +181,38 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
         imageView.setLayoutY(180);
         imageView.setFitWidth(largeur * 1 / 3);
         imageView.setFitHeight(largeur * 1 / 3);
+       
         
-        aide.setLayoutX(60);aide.setLayoutY(hauteur-170);aide.setFont(new Font ("Arial", 20));
-        aide2.setLayoutX(largeur*2/3+10);aide2.setLayoutY(5);aide2.setFont(new Font ("Arial", 12));
-        devis.setLayoutX((largeur*2/3)/3);devis.setLayoutY(20);devis.setFont(new Font("Arial",20));
+        aide.setLayoutX(20);
+        aide.setLayoutY(150);
+        aide.setFont(new Font ("Papyrus", 17));
+        
+        aide2.setLayoutX(20);
+        aide2.setLayoutY(5);
+        aide2.setFont(new Font ("Papyrus", 12));
+        
+        aide3.setLayoutX(largeur/3);    //POUR L'INSTANT INUTILE
+        aide3.setLayoutY(hauteur/3);
+        aide3.setFont(new Font ("Papyrus", 100));
+        
+        aide4.setLayoutX(20);      // POUR LE MESSAGE D'ALERTE ERREUR
+        aide4.setLayoutY(hauteur*1/3+50);
+        aide4.setFont(new Font ("Papyrus", 15));
+        aide4.setText("SQUILLARIO-THOMAS-SCMITT");
+        
+        devis.setLayoutX(largeur*1/4);
+        devis.setLayoutY(10);devis.setFont(new Font("Papyrus",15));
         devis.setText ("Le prix du bâtiment est de : "+getPrix()+"euros");
-        devisetage.setLayoutX(largeur*2/3);devisetage.setLayoutY(hauteur-100);devisetage.setFont(new Font("Arial",20));
+        
+        devisetage.setLayoutX(largeur*1/4);
+        devisetage.setLayoutY(hauteur-75);
+        devisetage.setFont(new Font("Papyrus",15));
         devisetage.setText ("Le devis pour cet étage est de : "+getPrixEtage()+"euros");
         
         //Bouton indiquant le numéro de l'étage actuelle (sous forme de bouton pour une question d'esthétisme même s'il pourrait être défini comme un Label
         Button idetage = new Button("Etage n°"+String.valueOf(etage.getIdetage()));
-        idetage.setLayoutX(largeur*2/3-120);idetage.setLayoutY(hauteur-50); 
+        idetage.setLayoutX(largeur*2/3-120);
+        idetage.setLayoutY(hauteur-75); 
         
         Button validation = Bouton.creationbouton("Valider", largeur * 2 / 3 - 150, hauteur - 150, () -> {
             switch (etage.getetape()) {
@@ -181,7 +238,8 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
         
         //menu déroulant des appartements
         ComboBox<String> boutonAppart = new ComboBox<>();
-        boutonAppart.setLayoutX(largeur*2/3);boutonAppart.setLayoutY(70);
+        boutonAppart.setLayoutX(20);
+        boutonAppart.setLayoutY(70);
         boutonAppart.setPromptText("Sélectionnez le numéro de l'appartement");
         for (int i =1; i<nbappart+1;i++){
             boutonAppart.getItems().add(String.valueOf(i));
@@ -195,17 +253,35 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
         //Une variable (attribut de l'étage) prend en compte l'etat d'avancements de l'etage pour afficher les elements correspondant
         switch (etage.getetape()) {
             case 0 -> {
-                aide.setText("Veuillez créer la cage d'escalier");
-                getChildren().addAll(aide, devis,devisetage); //Création de l'escalier uniquement pour le rdc
+                aide.setText("Veuillez créer la cage d'escalier");   
+                getChildren().addAll(aide, devis, devisetage); //Création de l'escalier uniquement pour le rdc
             }
+            
+            
+            
             case 1 -> { // Création des pièces
-                for (int i =0 ; i<2;i++) {
+                /*ComboBox<String> bouton1 = new ComboBox<>();
+                bouton1.setLayoutX(largeur*2/3);
+                bouton1.setLayoutY(70);
+                bouton1.setPromptText("Choisissez la pièce");
+                for (int i=0; i<2; i++){
+                    bouton1.getItems().add(String.valueOf(i));
+                }               
+                
+                bouton1.getSelectionModel().selectedItemProperty().addListener(choixAppartListener);*/ 
+                for (int i=0 ; i<2;i++) {
                     Button button=Bouton.boutons.get(i);
                     getChildren().add(button);
                 }
-                aide2.setText("surfacetot : "+Etage.getSurfacetot(etage)+" et surface terrain : "+Mur.getLargeur(etage.getMur().get(1))*Mur.getLargeur(etage.getMur().get(2)));
+                
+                            
+                aide2.setText("surface totale : "+Etage.getSurfacetot(etage)+"\nsurface terrain : "+Mur.getLargeur(etage.getMur().get(1))*Mur.getLargeur(etage.getMur().get(2)));
                 getChildren().addAll(aide, aide2, devis,devisetage,idetage,Bouton.boutons.get(5));
             }
+            
+            
+            
+            
             case 2 -> { //Définition du nombre d'appart pour l'étage
                 TextInputDialog dialog = new TextInputDialog();
                 boolean validInput = false;
@@ -226,13 +302,21 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                             }
                         } catch (NumberFormatException e) {
                             System.out.println("Veuillez saisir un nombre entier");
+                            aide4.setText("ERREUR");
+                            /*Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(4),event->{aide4.setText("77 ");}));
+                            timeline.setCycleCount(1);
+                            timeline.play();
+                            getChildren().addAll(aide4);*/
                         }
                     }
                 }
             }
             case 3 -> {//menu déroulant des appartements
-                getChildren().addAll(boutonAppart,validation,idetage,Bouton.boutons.get(5));
+                getChildren().addAll(boutonAppart, aide,validation,idetage,Bouton.boutons.get(5));
+                aide.setText("mettre une aide je sais\n meme pas comment ca marche\n (ligne316 du code)");
             }
+            
+            
             case 4 -> {//Ouvertures
                 for (int i =1 ; i< 3;i++) {
                     Button button=Bouton.boutons.get(i);
@@ -240,13 +324,17 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                 }
                 getChildren().addAll(aide, devis,devisetage,idetage,Bouton.boutons.get(5));
             }
+            
+            
             case 5 -> {//Revêtements
                 getChildren().add(Bouton.boutons.get(1));
                 getChildren().add(Bouton.boutons.get(3));
                 aide2.setText("nombre de surface à revetir = "+getNbSurface()+"nombre de surface revetit = "+getRev());
-                getChildren().addAll(aide, aide2, devis,devisetage,idetage,Bouton.boutons.get(5),validation);
+                getChildren().addAll(aide, aide2, devis, devisetage, idetage, Bouton.boutons.get(5), validation);
                 getChildren().add(imageView);//Légende des revêtement
             }
+            
+            
             case 6 -> {//Possibilité d'incrémenter l'étage
                 if (etage.getIdetage()==Devis.getnbetage()-1){
                     getChildren().add(validation);
@@ -255,6 +343,8 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                 getChildren().addAll(aide, aide2, devis,devisetage,idetage);
                 getChildren().add(imageView);
             }
+            
+            
             case 7 -> {// Si le bâtiment est finit (tous les étages on été revêtit et que l'utilisateur valide
                 Alert alert = new Alert(Alert.AlertType.NONE);
                 alert.setTitle("Validation du bâtiment");
@@ -277,7 +367,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
             }default -> {}
         }
         //Dessiner les murs extérieur (terrain) et définition de la couleur en fonction de son revetement
-        for (int i = 0; i<5;i++) {
+        for (int i = 0; i<6;i++) {
             Mur cote = etage.getMur().get(i);
             Line lineMur = new Line (cote.getDepart().getX(),cote.getDepart().getY(),cote.getArrivee().getX(),cote.getArrivee().getY());
                 switch (cote.getRevetement().getTypeRevetement()){
@@ -404,6 +494,11 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                 if (Math.abs(coin.getX() - e.getX()) < 20 && Math.abs(coin.getY() - e.getY()) < 20) {
                     if (coin==selectedCoin){
                         aide.setText("Vous avez déjà sélectionner ce coin");
+                        /*aide4.setText("ERREUR");
+                            Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(4),event->{aide4.setText(" ");}));
+                            timeline.setCycleCount(1);
+                            timeline.play();*/
+                           
                     }
                 }else if ((x>etage.getMur().get(4).getDepart().getX())&&(x<etage.getMur().get(2).getArrivee().getX())&&
                          (y>etage.getMur().get(1).getDepart().getY())&&(y<etage.getMur().get(3).getArrivee().getY())){  
@@ -426,9 +521,13 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                     //selection d'un coin dans une rayon de 20 pixels
                     if (Math.abs(cote.getX() - e.getX()) < 20 && Math.abs(cote.getY() - e.getY()) < 20) {
                         premierCoin = cote;
-                        selectedCoin = cote;
-                        aide.setText("Veuillez maintenant placer un coin");
+                        selectedCoin = cote;         
+                        aide.setText("Veuillez maintenant placer un coin\n sur un mur existant, ou sur un autre\n coin");
                         redraw();
+                        /*aide4.setText("ERREUR");
+                            Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(4),event->{aide4.setText("ERREUR");}));
+                            timeline.setCycleCount(1);
+                            timeline.play();*/
                     }
                 }
             } else {
@@ -436,7 +535,32 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                 for (Coin coin : etage.getCoin()) {
                     if (Math.abs(coin.getX() - e.getX()) < 20 && Math.abs(coin.getY() - e.getY()) < 20) {
                         if (coin == selectedCoin) {
-                            aide.setText("Vous avez déjà sélectionner ce coin");
+                            aide.setText("Vous avez déjà sélectionné ce coin là");
+                            Alert alert1 = new Alert(Alert.AlertType.NONE);
+                            alert1.setTitle("ERREUR...");
+                            alert1.setHeaderText(null);
+                            alert1.setContentText("Vous ne pouvez construire une pièce avec un seul coin !!");
+                            ButtonType ok = new ButtonType("Ok");
+                                    alert1.getButtonTypes().setAll(ok);
+                                    Optional<ButtonType> finir = alert1.showAndWait();
+                                if (finir.get() == ok) {
+                                    Devis.primaryStage.close();
+                                }
+                            /*aide2.setText("ERREUR");*/
+                            /*Text text = new Text("erreur");
+                            FadeTransition fadeTransition = new FadeTransition(Duration.seconds(1),text);
+                            fadeTransition.setFromValue(1.0);
+                            fadeTransition.setToValue(0.0);
+                            fadeTransition.setCycleCount(3); // Répéter indéfiniment
+                            fadeTransition.setAutoReverse(true); // Revenir en arrière automatiquement
+
+                             // Commencer la transition
+                            fadeTransition.play();
+                            StackPane root = new StackPane();
+                            root.getChildren().add(text);*/
+
+                            // Créer la scène et afficher la fenêtre
+                            
                             break;
                         } else {
                             deja=true;
@@ -511,6 +635,16 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                             redraw();
                         }else{
                             aide.setText("Le coin ne peut pas être placé à l'intérieur d'une pièce existante.");
+                            Alert alert1 = new Alert(Alert.AlertType.NONE);
+                            alert1.setTitle("ERREUR...");
+                            alert1.setHeaderText(null);
+                            alert1.setContentText("Vous ne pouvez construire une pièce qui se chevauche avec une autre !!");
+                            ButtonType ok = new ButtonType("Ok");
+                                    alert1.getButtonTypes().setAll(ok);
+                                    Optional<ButtonType> finir = alert1.showAndWait();
+                                if (finir.get() == ok) {
+                                    Devis.primaryStage.close();
+                                }
                         }
                     }
                 }
@@ -712,7 +846,8 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
         if(!pasdedans){
             Coin un, deux;
             Mur Haut, Bas, Gauche,Droit ;
-            Sol newSol =new Sol(Sol.getLastIdsol(),new Revetement(Revetement.getLastIdrev()," ",0,1,0,0));
+            
+            Sol newSol = new Sol(Sol.getLastIdsol(),new Revetement(Revetement.getLastIdrev()," ",0,1,0,0));
             Plafond newPlafond = new Plafond(Plafond.getLastIdplafond(),new Revetement(Revetement.getLastIdrev()," ",0,0,1,0));
             if((premierCoin.getX()<deuxiemecoin.getX())&&(premierCoin.getY()>deuxiemecoin.getY())){
                 un = new Coin(Coin.getLastIdcoin(),premierCoin.getX(),deuxiemecoin.getY(),etage.getIdetage());
@@ -721,6 +856,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                 Bas = new Mur(Mur.getLastIdmur(),deux,premierCoin,etage.getIdetage(),new Revetement(Revetement.getLastIdrev()," ",1,0,0,0));
                 Gauche = new Mur(Mur.getLastIdmur(),premierCoin,un,etage.getIdetage(),new Revetement(Revetement.getLastIdrev()," ",1,0,0,0));
                 Droit = new Mur(Mur.getLastIdmur(),deuxiemecoin,deux,etage.getIdetage(),new Revetement(Revetement.getLastIdrev()," ",1,0,0,0)); 
+                
             }else if ((premierCoin.getX()>deuxiemecoin.getX())&&(premierCoin.getY()<deuxiemecoin.getY())){
                 un = new Coin(Coin.getLastIdcoin(),premierCoin.getX(),deuxiemecoin.getY(),etage.getIdetage());
                 deux = new Coin(Coin.getLastIdcoin(),deuxiemecoin.getX(),premierCoin.getY(),etage.getIdetage());
@@ -728,6 +864,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                 Bas = new Mur(Mur.getLastIdmur(),un,deuxiemecoin,etage.getIdetage(),new Revetement(Revetement.getLastIdrev()," ",1,0,0,0));
                 Gauche = new Mur(Mur.getLastIdmur(),deuxiemecoin,deux,etage.getIdetage(),new Revetement(Revetement.getLastIdrev()," ",1,0,0,0));
                 Droit = new Mur(Mur.getLastIdmur(),premierCoin,un,etage.getIdetage(),new Revetement(Revetement.getLastIdrev()," ",1,0,0,0));
+                
             }else if ((premierCoin.getX()<deuxiemecoin.getX())&&(premierCoin.getY()<deuxiemecoin.getY())){
                 un = new Coin(Coin.getLastIdcoin(),deuxiemecoin.getX(),premierCoin.getY(),etage.getIdetage());
                 deux = new Coin(Coin.getLastIdcoin(),premierCoin.getX(),deuxiemecoin.getY(),etage.getIdetage());
@@ -735,6 +872,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                 Bas = new Mur(Mur.getLastIdmur(),deuxiemecoin,deux,etage.getIdetage(),new Revetement(Revetement.getLastIdrev()," ",1,0,0,0));
                 Gauche = new Mur(Mur.getLastIdmur(),deux,premierCoin,etage.getIdetage(),new Revetement(Revetement.getLastIdrev()," ",1,0,0,0));
                 Droit = new Mur(Mur.getLastIdmur(),un,deuxiemecoin,etage.getIdetage(),new Revetement(Revetement.getLastIdrev()," ",1,0,0,0));
+                
             }else {
                 un = new Coin(Coin.getLastIdcoin(),deuxiemecoin.getX(),premierCoin.getY(),etage.getIdetage());
                 deux = new Coin(Coin.getLastIdcoin(),premierCoin.getX(),deuxiemecoin.getY(),etage.getIdetage());
@@ -831,4 +969,81 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
     public int getNbpiece(){
         return(etage.getPiece().size());
     }
+    
+    
+    
+    
+   /* 
+    
+    
+    
+    class Event {
+    private String name;
+    private int year;
+
+    public Event(String name, int year) {
+        this.name = name;
+        this.year = year;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getYear() {
+        return year;
+    }
 }
+
+class TimelinePanel extends JPanel {
+    private ArrayList<Event> events;
+
+    public TimelinePanel(ArrayList<Event> events) {
+        this.events = events;
+    }
+
+   
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
+        int margin = 50;
+        int height = getHeight1();
+        int width = getWidth1();
+
+        // Dessine une ligne horizontale
+        g.drawLine(margin, height / 2, width - margin, height / 2);
+
+        // Dessine les événements
+        for (Event event : events) {
+            int x = margin + (event.getYear() - events.get(0).getYear()) * (width - 2 * margin) / (events.get(events.size() - 1).getYear() - events.get(0).getYear());
+            int y = height / 2 - 10; // Ajuste la coordonnée Y pour le marqueur d'événement
+            g.drawString(event.getName(), x, y);
+            g.drawLine(x, height / 2 - 5, x, height / 2 + 5); // Dessine le marqueur
+        }
+    }
+}
+
+public class TimelineExample {
+    public static void main(String[] args) {
+        ArrayList<Event> events = new ArrayList<>();
+        events.add(new Event("Événement A", 2000));
+        events.add(new Event("Événement B", 2010));
+        events.add(new Event("Événement C", 2020));
+
+        JFrame frame = new JFrame("Timeline");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize((hauteur-(hauteur/8)), largeur);
+
+        TimelinePanel timelinePanel = new TimelinePanel(events);
+        frame.add(timelinePanel);
+
+        frame.setVisible(true);
+    }
+}*/
+}
+
+/* Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1),event->{aide4.setText(" ");}));
+                timeline.setCycleCount(1);
+                timeline.play();
+                getChildren().addAll(aide4);
+*/
