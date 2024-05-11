@@ -12,10 +12,7 @@ import static fr.insa.schmitt.projet_devis_s2.Devis.primaryStage;
 import static fr.insa.schmitt.projet_devis_s2.Interface.aide;
 import static fr.insa.schmitt.projet_devis_s2.Interface.aide4;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.Optional;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.beans.value.ChangeListener;
 import javafx.scene.input.MouseEvent;
 import javafx.event.EventHandler;
@@ -41,6 +38,10 @@ import javafx.scene.layout.BackgroundSize;
 /*import javax.swing.*;
 import java.awt.*;*/
 import java.util.ArrayList;
+import static java.util.Arrays.fill;
+import static java.util.Collections.fill;
+import javafx.scene.control.DialogPane;
+import static javafx.scene.text.Font.font;
 
 
 
@@ -208,6 +209,8 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
         Button idetage = new Button("Etage n°"+String.valueOf(etage.getIdetage()));
         idetage.setLayoutX(largeur*2/3-120);
         idetage.setLayoutY(hauteur-75); 
+        
+        
         
         Button validation = Bouton.creationbouton("Valider", largeur * 2 / 3 - 150, hauteur - 150, () -> {
             switch (etage.getetape()) {
@@ -539,7 +542,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                                     alert1.getButtonTypes().setAll(ok);
                                     Optional<ButtonType> finir = alert1.showAndWait();
                                 if (finir.get() == ok) {
-                                    Devis.primaryStage.close();
+                                    alert1.close();
                                 }
                             /*aide2.setText("ERREUR");*/
                             /*Text text = new Text("erreur");
@@ -638,7 +641,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                                     alert1.getButtonTypes().setAll(ok);
                                     Optional<ButtonType> finir = alert1.showAndWait();
                                 if (finir.get() == ok) {
-                                    Devis.primaryStage.close();
+                                    alert1.close();
                                 }
                         }
                     }
