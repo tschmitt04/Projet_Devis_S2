@@ -219,7 +219,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                         Bouton.appart=false;
                         etage.setEtape(4);
                     }else{
-                        Interface.aide.setText("Toutes les pièces n'ont pas été affectées à un appartement");
+                        Interface.aide.setText("Toutes les pièces n'ont pas\n été affectées à un appartement");
                     }
                 }
                 case 6 -> {
@@ -364,8 +364,8 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                 }
             }default -> {}
         }
-        //Dessiner les murs extérieur (terrain) et définition de la couleur en fonction de son revetement
-        for (int i = 0; i<6;i++) {
+        //Dessiner les murs extérieur (terrain) et définition de la couleur en fonction de son revetement///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        for (int i = 0; i<9;i++) {
             Mur cote = etage.getMur().get(i);
             Line lineMur = new Line (cote.getDepart().getX(),cote.getDepart().getY(),cote.getArrivee().getX(),cote.getArrivee().getY());
                 switch (cote.getRevetement().getTypeRevetement()){
@@ -632,7 +632,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                             Bouton.piece=false;
                             redraw();
                         }else{
-                            aide.setText("Le coin ne peut pas être placé à l'intérieur d'une pièce existante.");
+                            aide.setText("Le coin ne peut pas être placé à\n l'intérieur d'une pièce existante.");
                             Alert alert1 = new Alert(Alert.AlertType.NONE);
                             alert1.setTitle("ERREUR...");
                             alert1.setHeaderText(null);
