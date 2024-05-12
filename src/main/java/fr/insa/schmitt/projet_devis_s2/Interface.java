@@ -35,6 +35,7 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundSize;
 import java.util.ArrayList;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
@@ -51,8 +52,10 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
     public static Label aide3;
     public static Label aide4;
     public static Text text;
+    public static Text text1;
     private final Label devis;
     private final Label devisetage;
+    public static Image imagegrue;
     public Etage etage;
     public double largeur;
     public double hauteur;
@@ -60,9 +63,10 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
     public static int choixAppart ;
     public static Coin premierCoin=null; 
     private Coin selectedCoin = null;
+    public static ImagePattern imagePattern;
     static final ArrayList<Interface> interfaces = new ArrayList<>(Devis.getnbetage());
     private final ImageView imageView = new ImageView("file:grue.jpg");
-    Image image = new Image("file:grue.jpg");
+    
     //file:legende.png
     
     //declare l'interface pour un etage spécifique
@@ -78,6 +82,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
         devis=new Label();
         devisetage=new Label();
         text = new Text();
+        text1 = new Text("--SCMITT--SQUILLARIO--THOMAS--B7--");
         setOnMouseClicked(this);
         redraw();
         interfaces.add(this);
@@ -213,11 +218,23 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
         rectangle1.setWidth(largeur*1/4-40);
         rectangle1.setHeight(hauteur*1/3-150);
         rectangle1.setFill(Color.LIGHTGREY);
+        
+        /*Rectangle rectangle2=new Rectangle();//association d'un revetement au sol selectionné (affichage d'un rectangle plein)
+        rectangle2.setX(5);
+        rectangle2.setY(150);
+        rectangle2.setWidth(largeur*1/4-40);
+        rectangle2.setHeight(hauteur*1/3-150);
+        rectangle2.setFill(gu);*/
                 
         text.setX(20); // Position X du texte
         text.setY(180); // Position Y du texte
         text.setFill(Color.BLACK); // Couleur du texte
         text.setFont(Font.font("Papyrus", FontWeight.BOLD, 17));
+        
+        text1.setX(20); // Position X du texte
+        text1.setY(hauteur-40); // Position Y du texte
+        text1.setFill(Color.BLACK); // Couleur du texte
+        text1.setFont(Font.font("Papyrus", FontWeight.BOLD, 10));
         
         
         
@@ -273,7 +290,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                 text.setFont(Font.font("Papyrus", FontWeight.BOLD, 17));*/
                 text.setText("Veuillez créer la cage d'escalier");
                 aide.setText("Veuillez créer la cage d'escalier");  
-                getChildren().addAll(aide, devis, devisetage, rectangle1, text); //Création de l'escalier uniquement pour le rdc
+                getChildren().addAll(aide, devis, devisetage, rectangle1, text, text1); //Création de l'escalier uniquement pour le rdc
             }
             
             
@@ -295,7 +312,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                 
                             
                 aide2.setText("surface totale : "+Etage.getSurfacetot(etage)+"\nsurface terrain : "+Mur.getLargeur(etage.getMur().get(1))*Mur.getLargeur(etage.getMur().get(2)));
-                getChildren().addAll(aide, aide2, devis,devisetage,idetage,Bouton.boutons.get(5), rectangle1, text);
+                getChildren().addAll(aide, aide2, devis,devisetage,idetage,Bouton.boutons.get(5), rectangle1, text, text1);
             }
             
             
@@ -331,7 +348,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                 }
             }
             case 3 -> {//menu déroulant des appartements
-                getChildren().addAll(boutonAppart, aide,validation,idetage,Bouton.boutons.get(5),rectangle1, text);
+                getChildren().addAll(boutonAppart, aide,validation,idetage,Bouton.boutons.get(5),rectangle1, text, text1);
                 text.setText("mettre une aide je sais\n meme pas comment ca marche\n (ligne316 du code)");
                 aide.setText("mettre une aide je sais\n meme pas comment ca marche\n (ligne316 du code)");
             }
@@ -342,7 +359,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                     Button button=Bouton.boutons.get(i);
                     getChildren().add(button);
                 }
-                getChildren().addAll(aide, devis,devisetage,idetage,Bouton.boutons.get(5),rectangle1, text);
+                getChildren().addAll(aide, devis,devisetage,idetage,Bouton.boutons.get(5),rectangle1, text, text1);
             }
             
             
@@ -350,7 +367,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                 getChildren().add(Bouton.boutons.get(1));
                 getChildren().add(Bouton.boutons.get(3));
                 aide2.setText("nombre de surface à revetir = "+getNbSurface()+"nombre de surface revetit = "+getRev());
-                getChildren().addAll(aide, aide2, devis, devisetage, idetage, Bouton.boutons.get(5), validation, rectangle1, text);
+                getChildren().addAll(aide, aide2, devis, devisetage, idetage, Bouton.boutons.get(5), validation, rectangle1, text, text1);
                 getChildren().add(imageView);//Légende des revêtement
             }
             
@@ -360,7 +377,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                     getChildren().add(validation);
                 }
                 getChildren().add(Bouton.boutons.get(4));
-                getChildren().addAll(aide, aide2, devis,devisetage, idetage, rectangle1, text);
+                getChildren().addAll(aide, aide2, devis,devisetage, idetage, rectangle1, text, text1);
                 getChildren().add(imageView);
             }
             
