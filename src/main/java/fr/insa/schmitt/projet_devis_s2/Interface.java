@@ -8,7 +8,6 @@ package fr.insa.schmitt.projet_devis_s2;
  *
  * @author Elève
  */
-import static fr.insa.schmitt.projet_devis_s2.Devis.primaryStage;
 import static fr.insa.schmitt.projet_devis_s2.Interface.aide;
 import static fr.insa.schmitt.projet_devis_s2.Interface.aide4;
 import java.text.DecimalFormat;
@@ -35,13 +34,9 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundSize;
-/*import javax.swing.*;
-import java.awt.*;*/
 import java.util.ArrayList;
-import static java.util.Arrays.fill;
-import static java.util.Collections.fill;
-import javafx.scene.control.DialogPane;
-import static javafx.scene.text.Font.font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 
 
 
@@ -55,6 +50,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
     public static Label aide2;
     public static Label aide3;
     public static Label aide4;
+    public static Text text;
     private final Label devis;
     private final Label devisetage;
     public Etage etage;
@@ -81,6 +77,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
         aide4=new Label();
         devis=new Label();
         devisetage=new Label();
+        text = new Text();
         setOnMouseClicked(this);
         redraw();
         interfaces.add(this);
@@ -210,6 +207,18 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
         idetage.setLayoutX(largeur*2/3-120);
         idetage.setLayoutY(hauteur-75); 
         
+    Rectangle rectangle1=new Rectangle();//association d'un revetement au sol selectionné (affichage d'un rectangle plein)
+        rectangle1.setX(5);
+        rectangle1.setY(150);
+        rectangle1.setWidth(largeur*1/4-40);
+        rectangle1.setHeight(hauteur*1/3-150);
+        rectangle1.setFill(Color.LIGHTGREY);
+                
+        text.setX(20); // Position X du texte
+        text.setY(180); // Position Y du texte
+        text.setFill(Color.BLACK); // Couleur du texte
+        text.setFont(Font.font("Papyrus", FontWeight.BOLD, 17));
+        
         
         
         Button validation = Bouton.creationbouton("Valider", largeur * 2 / 3 - 150, hauteur - 150, () -> {
@@ -251,8 +260,20 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
         //Une variable (attribut de l'étage) prend en compte l'etat d'avancements de l'etage pour afficher les elements correspondant
         switch (etage.getetape()) {
             case 0 -> {
-                aide.setText("Veuillez créer la cage d'escalier");   
-                getChildren().addAll(aide, devis, devisetage); //Création de l'escalier uniquement pour le rdc
+                /*Rectangle rectangle1=new Rectangle();//association d'un revetement au sol selectionné (affichage d'un rectangle plein)
+                rectangle1.setX(5);
+                rectangle1.setY(150);
+                rectangle1.setWidth(largeur*1/4-40);
+                rectangle1.setHeight(hauteur*1/3-150);
+                rectangle1.setFill(Color.LIGHTGREY);
+                Text text = new Text("Veuillez créer la cage d'escalier");
+                text.setX(20); // Position X du texte
+                text.setY(180); // Position Y du texte
+                text.setFill(Color.WHITE); // Couleur du texte
+                text.setFont(Font.font("Papyrus", FontWeight.BOLD, 17));*/
+                text.setText("Veuillez créer la cage d'escalier");
+                aide.setText("Veuillez créer la cage d'escalier");  
+                getChildren().addAll(aide, devis, devisetage, rectangle1, text); //Création de l'escalier uniquement pour le rdc
             }
             
             
@@ -274,7 +295,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                 
                             
                 aide2.setText("surface totale : "+Etage.getSurfacetot(etage)+"\nsurface terrain : "+Mur.getLargeur(etage.getMur().get(1))*Mur.getLargeur(etage.getMur().get(2)));
-                getChildren().addAll(aide, aide2, devis,devisetage,idetage,Bouton.boutons.get(5));
+                getChildren().addAll(aide, aide2, devis,devisetage,idetage,Bouton.boutons.get(5), rectangle1, text);
             }
             
             
@@ -310,7 +331,8 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                 }
             }
             case 3 -> {//menu déroulant des appartements
-                getChildren().addAll(boutonAppart, aide,validation,idetage,Bouton.boutons.get(5));
+                getChildren().addAll(boutonAppart, aide,validation,idetage,Bouton.boutons.get(5),rectangle1, text);
+                text.setText("mettre une aide je sais\n meme pas comment ca marche\n (ligne316 du code)");
                 aide.setText("mettre une aide je sais\n meme pas comment ca marche\n (ligne316 du code)");
             }
             
@@ -320,7 +342,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                     Button button=Bouton.boutons.get(i);
                     getChildren().add(button);
                 }
-                getChildren().addAll(aide, devis,devisetage,idetage,Bouton.boutons.get(5));
+                getChildren().addAll(aide, devis,devisetage,idetage,Bouton.boutons.get(5),rectangle1, text);
             }
             
             
@@ -328,7 +350,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                 getChildren().add(Bouton.boutons.get(1));
                 getChildren().add(Bouton.boutons.get(3));
                 aide2.setText("nombre de surface à revetir = "+getNbSurface()+"nombre de surface revetit = "+getRev());
-                getChildren().addAll(aide, aide2, devis, devisetage, idetage, Bouton.boutons.get(5), validation);
+                getChildren().addAll(aide, aide2, devis, devisetage, idetage, Bouton.boutons.get(5), validation, rectangle1, text);
                 getChildren().add(imageView);//Légende des revêtement
             }
             
@@ -338,7 +360,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                     getChildren().add(validation);
                 }
                 getChildren().add(Bouton.boutons.get(4));
-                getChildren().addAll(aide, aide2, devis,devisetage,idetage);
+                getChildren().addAll(aide, aide2, devis,devisetage, idetage, rectangle1, text);
                 getChildren().add(imageView);
             }
             
@@ -381,9 +403,9 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
             Coin coin = etage.getCoin().get(i);
             Circle cercle;
             if (coin == selectedCoin) {
-                cercle = new Circle(coin.getX(), coin.getY(), 5, Color.BLUE); //Bleu si coin selectionné
+                cercle = new Circle(coin.getX(), coin.getY(), 5, Color.GREEN); //Bleu si coin selectionné
             } else {
-                cercle = new Circle(coin.getX(), coin.getY(), 5, Color.RED); //Rouge sinon
+                cercle = new Circle(coin.getX(), coin.getY(), 5, Color.BLUE); //Rouge sinon
             }
             getChildren().add(cercle);
         }
@@ -392,7 +414,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
         for (Ouverture ouv : etage.getOuverture()){
             Line o = new Line(ouv.getXd(),ouv.getYd(),ouv.getXf(),ouv.getYf());
             o.setStrokeWidth(6);
-            o.setStroke(Color.DARKRED);
+            o.setStroke(Color.RED);
             getChildren().add(o);
         }
         
@@ -482,6 +504,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                         if (Math.abs(cote.getX() - e.getX()) < 20 && Math.abs(cote.getY() - e.getY()) < 20) {
                                 premierCoin = cote;
                                 selectedCoin = cote;
+                                text.setText("Veuillez maintenant placer un coin");
                                 aide.setText("Veuillez maintenant placer un coin");
                                 redraw();
                                 break;
@@ -491,6 +514,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
             for (Coin coin : etage.getCoin()){
                 if (Math.abs(coin.getX() - e.getX()) < 20 && Math.abs(coin.getY() - e.getY()) < 20) {
                     if (coin==selectedCoin){
+                        text.setText("Vous avez déjà sélectionner ce coin");
                         aide.setText("Vous avez déjà sélectionner ce coin");
                         /*aide4.setText("ERREUR");
                             Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(4),event->{aide4.setText(" ");}));
@@ -521,6 +545,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                         premierCoin = cote;
                         selectedCoin = cote;         
                         aide.setText("Veuillez maintenant placer un coin\n sur un mur existant, ou sur un autre\n coin");
+                        text.setText("Veuillez maintenant placer un coin\n sur un mur existant, ou sur un autre\n coin");
                         redraw();
                         /*aide4.setText("ERREUR");
                             Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(4),event->{aide4.setText("ERREUR");}));
@@ -534,6 +559,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                     if (Math.abs(coin.getX() - e.getX()) < 20 && Math.abs(coin.getY() - e.getY()) < 20) {
                         if (coin == selectedCoin) {
                             aide.setText("Vous avez déjà sélectionné ce coin là");
+                            text.setText("Vous avez déjà sélectionné ce coin là");
                             Alert alert1 = new Alert(Alert.AlertType.NONE);
                             alert1.setTitle("ERREUR...");
                             alert1.setHeaderText(null);
