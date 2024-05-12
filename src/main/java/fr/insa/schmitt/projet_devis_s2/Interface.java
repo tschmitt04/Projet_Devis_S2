@@ -45,6 +45,10 @@ import javafx.scene.text.Text;
 
 
 
+
+
+
+
 public final class Interface extends Pane implements EventHandler<MouseEvent> {
     
     public static Label aide;
@@ -170,6 +174,16 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
             }
         }
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     //méthode servant à afficher des elements dans l'interface
     public void redraw(){
         getChildren().clear();
@@ -213,20 +227,20 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
         idetage.setLayoutX(largeur*2/3-120);
         idetage.setLayoutY(hauteur-75); 
         
-    Rectangle rectangle1=new Rectangle();//association d'un revetement au sol selectionné (affichage d'un rectangle plein)
+        Rectangle rectangle1=new Rectangle();//association d'un revetement au sol selectionné (affichage d'un rectangle plein)
         rectangle1.setX(5);
         rectangle1.setY(150);
         rectangle1.setWidth(largeur*1/4-40);
         rectangle1.setHeight(hauteur*1/3-150);
         rectangle1.setFill(Color.LIGHTGREY);
         
-        /*Rectangle rectangle2=new Rectangle();//association d'un revetement au sol selectionné (affichage d'un rectangle plein)
+        Rectangle rectangle2=new Rectangle();//association d'un revetement au sol selectionné (affichage d'un rectangle plein)
         rectangle2.setX(5);
         rectangle2.setY(150);
         rectangle2.setWidth(largeur*1/4-40);
         rectangle2.setHeight(hauteur*1/3-150);
-        rectangle2.setFill(gu);*/
-                
+        rectangle2.setFill(Color.WHITE);
+        
         text.setX(20); // Position X du texte
         text.setY(180); // Position Y du texte
         text.setFill(Color.BLACK); // Couleur du texte
@@ -261,6 +275,12 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
             }
         });
         
+        
+        
+        
+        
+        
+        
         //menu déroulant des appartements
         ComboBox<String> boutonAppart = new ComboBox<>();
         boutonAppart.setLayoutX(20);
@@ -274,9 +294,21 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
             choixAppart = Integer.parseInt(choixAppartStr);
         };
         boutonAppart.getSelectionModel().selectedItemProperty().addListener(choixAppartListener);
+        
+        
+        
+        
+        
+        
+        
+        
+        
        
+        
+        
         //Une variable (attribut de l'étage) prend en compte l'etat d'avancements de l'etage pour afficher les elements correspondant
         switch (etage.getetape()) {
+            
             case 0 -> {
                 /*Rectangle rectangle1=new Rectangle();//association d'un revetement au sol selectionné (affichage d'un rectangle plein)
                 rectangle1.setX(5);
@@ -293,6 +325,8 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                 aide.setText("Veuillez créer la cage d'escalier");  
                 getChildren().addAll(aide, devis, devisetage, rectangle1, text, text1); //Création de l'escalier uniquement pour le rdc
             }
+            
+            
             
             
             
@@ -315,6 +349,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                 aide2.setText("Surface totale : "+Math.round(Etage.getSurfacetot(etage))+" m²\n(arrondie de :"+Etage.getSurfacetot(etage)+"m²)\n \nSurface terrain : "+Math.round((Mur.getLargeur(etage.getMur().get(1))*Devis.getechellelongeur())*(Mur.getLargeur(etage.getMur().get(2))*Devis.getechellelargeur()))+" m²\n(arrondie de :"+(Mur.getLargeur(etage.getMur().get(1))*Devis.getechellelongeur())*(Mur.getLargeur(etage.getMur().get(2))*Devis.getechellelargeur())+"m²)");
                 getChildren().addAll(aide, aide2, devis,devisetage,idetage,Bouton.boutons.get(5), rectangle1, text, text1);
             }
+            
             
             
             
@@ -348,11 +383,19 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                     }
                 }
             }
+            
+            
+            
+            
+            
             case 3 -> {//menu déroulant des appartements
                 getChildren().addAll(boutonAppart, aide,validation,idetage,Bouton.boutons.get(5),rectangle1, text, text1);
                 text.setText("mettre une aide je sais\n meme pas comment ca marche\n (ligne316 du code)");
                 aide.setText("mettre une aide je sais\n meme pas comment ca marche\n (ligne316 du code)");
             }
+            
+            
+            
             
             
             case 4 -> {//Ouvertures
@@ -364,6 +407,9 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
             }
             
             
+            
+            
+            
             case 5 -> {//Revêtements
                 getChildren().add(Bouton.boutons.get(1));
                 getChildren().add(Bouton.boutons.get(3));
@@ -371,6 +417,9 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                 getChildren().addAll(aide, aide2, devis, devisetage, idetage, Bouton.boutons.get(5), validation, rectangle1, text, text1);
                 getChildren().add(imageView);//Légende des revêtement
             }
+            
+            
+            
             
             
             case 6 -> {//Possibilité d'incrémenter l'étage
@@ -381,6 +430,9 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                 getChildren().addAll(aide, aide2, devis,devisetage, idetage, rectangle1, text, text1);
                 getChildren().add(imageView);
             }
+            
+            
+            
             
             
             case 7 -> {// Si le bâtiment est finit (tous les étages on été revêtit et que l'utilisateur valide
@@ -402,8 +454,23 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                             Devis.primaryStage.close();
                         }
                 }
-            }default -> {}
+                
+            }
+            
+            
+            
+            
+            
+            
+            default -> {}
         }
+        
+        
+        
+        
+        
+        
+        
         //Dessiner les murs extérieur (terrain) et définition de la couleur en fonction de son revetement///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         for (int i = 0; i<9;i++) {
             Mur cote = etage.getMur().get(i);
@@ -439,9 +506,10 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
         for (Piece piece : etage.getPiece()) {
             Label typepiece = new Label();
             Label appart = new Label();
-            Rectangle rectangle=new Rectangle();//association d'un revetement au sol selectionné (affichage d'un rectangle plein)
+            Rectangle rectangle=new Rectangle();    //association d'un revetement au sol selectionné (affichage d'un rectangle plein)
             rectangle.setX(piece.getMurHaut().getDepart().getX()+5);rectangle.setY(piece.getMurHaut().getDepart().getY()+5);
             rectangle.setWidth(Mur.getLargeur(piece.getMurHaut())-10);rectangle.setHeight(Mur.getLargeur(piece.getMurDroit())-10);
+            
             switch(piece.getSol().getRevetement().getTypeRevetement()){
                 case "Carrelage" -> rectangle.setFill(Color.HONEYDEW);
                 case "Parquet" -> rectangle.setFill(Color.DARKSALMON);
@@ -452,6 +520,10 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                 default -> rectangle.setFill(Color.WHITE);
             }
             getChildren().add(rectangle);
+            
+             
+            
+            
             //meme principe pour les murs (ligne décalée de 2 pixels vers l'intérieurs pour reconnaitre l'intérieur et l'extérieur
             for (Mur mur : piece.getMurs()) {
                 Line lineMur;               
@@ -477,6 +549,10 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                 }
                 getChildren().add(lineMur);
             }
+            
+            
+            
+            
             //meme principe pour les plafond, ici l'affichache se fait en hachures pour eviter la supperposition avec le sol (plusieurs lignes verticales)
             double i = piece.getMurHaut().getDepart().getX()+5;
                 while (i<piece.getMurHaut().getArrivee().getX()-5){
@@ -491,6 +567,10 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                     i=i+25;
                     getChildren().add(newLine);
             }
+                
+                
+                
+                
                 //Affichage du numéro d'appartement auquel appartient la pièce
             if (piece.getAppart()!=0){
                 appart.setText("Appartement n°" +piece.getAppart());appart.toFront();
@@ -505,6 +585,13 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
             getChildren().add(typepiece);
         }
     }    
+    
+    
+    
+    
+    
+    
+    
     
     //Méthode de détection de la souris (click)
     @Override
@@ -552,7 +639,11 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                 }
             }
           }
-        }                    
+        }              
+        
+        
+        
+        
         //Si un type de piece a été selectionné
         if (Bouton.piece) {
             //si c'est le premeir coin que l'on pose
@@ -691,6 +782,10 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                     }
                 }
         }        
+        
+        
+        
+        
         //selection des appartements
         if (Bouton.appart==true){
             for (int i=1;i<etage.getPiece().size();i++){
@@ -702,6 +797,9 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                 }
             }
         }
+        
+        
+        
         
         //pose des revetements
         if (Bouton.rev){
@@ -811,6 +909,10 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                     }
             }
         }
+        
+        
+        
+        
         //Pose des ouvertures
         if (Bouton.ouv==true){
             if ("Valider les ouvertures".equals(Bouton.ouverture)){
@@ -875,6 +977,10 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
         Bouton.ouv=false;
         redraw();
     }
+    
+    
+    
+    
     
     //méthode de création de la piece
     public void creationpiece(Coin deuxiemecoin, boolean deja){
