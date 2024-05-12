@@ -13,8 +13,10 @@ public class Ouverture {
     private static int lastId = 0;
     private final int idouv ;
     public String typeouverture;
-    public double xd;public double xf;
-    public double yd;public double yf;
+    public double xd;
+    public double xf;
+    public double yd;
+    public double yf;
     public int revetement;
     public int idetage;
     
@@ -29,6 +31,7 @@ public class Ouverture {
         this.idetage = idetage;
     }
     
+    
     public int getIdetage() {
         return idetage;
     }
@@ -38,9 +41,12 @@ public class Ouverture {
         return typeouverture;
     }
     
+    
     public double getXd() {
         return xd;
     }
+    
+    
     public void setXd(Double xd) {
         this.xd = xd;
     }
@@ -49,6 +55,7 @@ public class Ouverture {
         return yd;
     }
     
+    
     public void setYd(Double yd) {
         this.yd = yd;
     }
@@ -56,24 +63,31 @@ public class Ouverture {
     public double getXf() {
         return xf;
     }
+    
+    
     public void setXf(Double xf) {
         this.xf = xf;
     }
+    
 
     public double getYf() {
         return yf;
     }
     
+    
     public void setYf(Double yf) {
         this.yf = yf;
     }
+    
     
     public int getidouv() {
         return idouv;
     }
 
+    
     public static int getLastIdouv() {
         return lastId;
     }   
+    
     
 }

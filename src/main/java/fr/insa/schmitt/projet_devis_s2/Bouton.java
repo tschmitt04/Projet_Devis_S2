@@ -65,7 +65,10 @@ public class Bouton {
         
         Button ouverturebouton = creationbouton("Ouverture", 20, 65, () -> {
             ouverture = Choix("Choisir le type d'ouverture",
-                    "Choisissez le type d'ouverture : ", "Valider les ouvertures","Porte", "Fenêtre");
+                    "Choisissez le type d'ouverture : ", 
+                    "Valider les ouvertures",
+                    "Porte", 
+                    "Fenêtre");
             ouv = true;
         });
         boutons.add(ouverturebouton);
@@ -76,7 +79,11 @@ public class Bouton {
         
         Button boutrevetement = creationbouton("Revêtement", 20, 65, () -> {
             surfacerev = Choix("Choisir la surface à revêtir",
-                    "Choisir la surface à revêtir :", "Sol", "Mur Intérieur", "Mur Extérieur", "Plafond");
+                    "Choisir la surface à revêtir :", 
+                    "Sol", 
+                    "Mur Intérieur", 
+                    "Mur Extérieur",
+                    "Plafond");
             typerev(surfacerev);
         });
         boutons.add(boutrevetement);
@@ -130,23 +137,44 @@ public class Bouton {
         switch (surface){
             case "Sol" -> { 
                 revetement = Choix("Choisir le revêtement du sol",
-                        "Choisir le revêtement du sol :", "Carrelage","Parquet", "Bardage", "Moquette","Vinyle Lino","Stratifie");
+                        "Choisir le revêtement du sol :", 
+                        "Carrelage",
+                        "Parquet", 
+                        "Bardage", 
+                        "Moquette",
+                        "Vinyle Lino",
+                        "Stratifie");
                 rev = true;
             }
 
             case "Mur Intérieur" -> { 
                 revetement = Choix("Choisir le revêtement du mur intérieur",
-                        "Choisir le revêtement du mur intérieur :","Peinture","Carrelage","Parquet","Bardage","Lambris","Liège");
+                        "Choisir le revêtement du mur intérieur :",
+                        "Peinture",
+                        "Carrelage",
+                        "Parquet",
+                        "Bardage",
+                        "Lambris",
+                        "Liège");
                 rev=true;
             }
+            
             case "Mur Extérieur" -> { 
                 revetement = Choix("Choisir le revêtement du mur extérieur",
-                        "Choisir le revêtement du mur extérieur :","Peinture","Bardage","Crépis");
+                        "Choisir le revêtement du mur extérieur :",
+                        "Peinture",
+                        "Bardage",
+                        "Crépis");
                 rev = true;
             }
+            
             case "Plafond" -> { 
                 revetement = Choix("Choisir le revêtement du plafond",
-                        "Choisir le revêtement du plafond :","Peinture","Parquet","Bardage","Lambris");
+                        "Choisir le revêtement du plafond :",
+                        "Peinture",
+                        "Parquet",
+                        "Bardage",
+                        "Lambris");
                 rev=true;
             }
         }

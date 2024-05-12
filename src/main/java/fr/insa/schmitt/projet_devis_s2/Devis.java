@@ -185,7 +185,8 @@ public class Devis extends Application {
         Coin coins1 = new Coin(Coin.getLastIdcoin(),largeur*1/4, 50,newEtage.getIdetage());
         Coin coins2 = new Coin(Coin.getLastIdcoin(),largeur-50, 50,newEtage.getIdetage());
         Coin coins3 = new Coin(Coin.getLastIdcoin(),largeur-50, hauteur-100,newEtage.getIdetage());
-        Coin coins4 = new Coin(Coin.getLastIdcoin(),largeur*1/4, hauteur-100,newEtage.getIdetage());
+        Coin coins4 = new Coin(Coin.getLastIdcoin(),largeur*1/4, hauteur-100,newEtage.getIdetage()); 
+        
         newEtage.getCoin().add(ch);
         newEtage.getCoin().add(cb);
         newEtage.getCoin().add(coins1);
@@ -250,9 +251,16 @@ public class Devis extends Application {
             Mur mur2terrain = new Mur (Mur.getLastIdmur(),coins2,coins3,newEtage.getIdetage(),new Revetement(Revetement.getLastIdrev(),murs2avant.getRevetement().getTypeRevetement(),1,0,0,murs2avant.getRevetement().getPrix()));
             Mur mur3terrain = new Mur (Mur.getLastIdmur(),coins3,coins4,newEtage.getIdetage(),new Revetement(Revetement.getLastIdrev(),murs3avant.getRevetement().getTypeRevetement(),1,0,0,murs3avant.getRevetement().getPrix()));
             Mur mur4terrain = new Mur (Mur.getLastIdmur(),coins4,coins1,newEtage.getIdetage(),new Revetement(Revetement.getLastIdrev(),murs4avant.getRevetement().getTypeRevetement(),1,0,0,murs4avant.getRevetement().getPrix()));
-            newEtage.getRevetement().add(lineterrain.getRevetement()); newEtage.getRevetement().add(mur1terrain.getRevetement()); newEtage.getRevetement().add(mur2terrain.getRevetement()); newEtage.getRevetement().add(mur3terrain.getRevetement()); newEtage.getRevetement().add(mur4terrain.getRevetement());
-            newEtage.getMur().add(lineterrain);newEtage.getMur().add(mur1terrain);newEtage.getMur().add(mur2terrain);newEtage.getMur().add(mur3terrain);newEtage.getMur().add(mur4terrain);
-
+            newEtage.getRevetement().add(lineterrain.getRevetement()); 
+            newEtage.getRevetement().add(mur1terrain.getRevetement()); 
+            newEtage.getRevetement().add(mur2terrain.getRevetement()); 
+            newEtage.getRevetement().add(mur3terrain.getRevetement()); 
+            newEtage.getRevetement().add(mur4terrain.getRevetement());
+            
+            newEtage.getMur().add(lineterrain);
+            newEtage.getMur().add(mur1terrain);
+            newEtage.getMur().add(mur2terrain);newEtage.getMur().add(mur3terrain);newEtage.getMur().add(mur4terrain);
+            
             Plafond newPlafond =new Plafond(Plafond.getLastIdplafond(),new Revetement (Revetement.getLastIdrev(),pla.getRevetement().getTypeRevetement(),pla.getRevetement().getMur(),pla.getRevetement().getSol(),pla.getRevetement().getPlafond(),pla.getRevetement().getPrix()));
             Sol newSol =new Sol(Sol.getLastIdsol(),new Revetement (Revetement.getLastIdrev(),sol.getRevetement().getTypeRevetement(),sol.getRevetement().getMur(),sol.getRevetement().getSol(),sol.getRevetement().getPlafond(),sol.getRevetement().getPrix()));
             Coin hg = new Coin (Coin.getLastIdcoin(),hgavant.getX(),hgavant.getY(),idetage); newEtage.getCoin().add(hg);
@@ -263,7 +271,7 @@ public class Devis extends Application {
             Mur Droit = new Mur (Mur.getLastIdmur(),hd,bd,idetage,new Revetement (Revetement.getLastIdrev(),droitavant.getRevetement().getTypeRevetement(),1,0,0,droitavant.getRevetement().getPrix())); newEtage.getMur().add(Droit);
             Mur Bas = new Mur (Mur.getLastIdmur(),bd,bg,idetage,new Revetement (Revetement.getLastIdrev(),basavant.getRevetement().getTypeRevetement(),1,0,0,basavant.getRevetement().getPrix())); newEtage.getMur().add(Bas);
             Mur Gauche = new Mur (Mur.getLastIdmur(),bg,hg,idetage,new Revetement (Revetement.getLastIdrev(),gaucheavant.getRevetement().getTypeRevetement(),1,0,0,gaucheavant.getRevetement().getPrix())); newEtage.getMur().add(Gauche);
-            Piece newPiece =new Piece (Piece.getLastIdpiece(),newSol,newPlafond,Haut,Droit,Bas,Gauche,idetage,avant.getUsage(),avant.getAppart());
+            Piece newPiece = new Piece (Piece.getLastIdpiece(),newSol,newPlafond,Haut,Droit,Bas,Gauche,idetage,avant.getUsage(),avant.getAppart());
             newEtage.getPiece().add(newPiece);newEtage.getPlafond().add(newPlafond);newEtage.getSol().add(newSol);
             newEtage.getRevetement().add(newPlafond.getRevetement());newEtage.getRevetement().add(newSol.getRevetement());
             newEtage.getRevetement().add(Haut.getRevetement());newEtage.getRevetement().add(Droit.getRevetement());newEtage.getRevetement().add(Bas.getRevetement());newEtage.getRevetement().add(Gauche.getRevetement());
