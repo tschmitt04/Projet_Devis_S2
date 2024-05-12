@@ -186,8 +186,8 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
         aide.setFont(new Font ("Papyrus", 17));
         
         aide2.setLayoutX(20);
-        aide2.setLayoutY(5);
-        aide2.setFont(new Font ("Papyrus", 12));
+        aide2.setLayoutY(hauteur*1/3+30);
+        aide2.setFont(new Font ("Papyrus", 14));
         
         aide3.setLayoutX(largeur/3);    //POUR L'INSTANT INUTILE
         aide3.setLayoutY(hauteur/3);
@@ -199,7 +199,8 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
         aide4.setText("SQUILLARIO-THOMAS-SCMITT");
         
         devis.setLayoutX(largeur*1/4);
-        devis.setLayoutY(10);devis.setFont(new Font("Papyrus",15));
+        devis.setLayoutY(10);
+        devis.setFont(new Font("Papyrus",15));
         devis.setText ("Le prix du bâtiment est de : "+getPrix()+"euros");
         
         devisetage.setLayoutX(largeur*1/4);
@@ -311,7 +312,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                 }
                 
                             
-                aide2.setText("surface totale : "+Etage.getSurfacetot(etage)+"\nsurface terrain : "+Mur.getLargeur(etage.getMur().get(1))*Mur.getLargeur(etage.getMur().get(2)));
+                aide2.setText("Surface totale : "+Math.round(Etage.getSurfacetot(etage))+" m²\n(arrondie de :"+Etage.getSurfacetot(etage)+"m²)\n \nSurface terrain : "+Math.round((Mur.getLargeur(etage.getMur().get(1))*Devis.getechellelongeur())*(Mur.getLargeur(etage.getMur().get(2))*Devis.getechellelargeur()))+" m²\n(arrondie de :"+(Mur.getLargeur(etage.getMur().get(1))*Devis.getechellelongeur())*(Mur.getLargeur(etage.getMur().get(2))*Devis.getechellelargeur())+"m²)");
                 getChildren().addAll(aide, aide2, devis,devisetage,idetage,Bouton.boutons.get(5), rectangle1, text, text1);
             }
             
@@ -1088,3 +1089,5 @@ public class TimelineExample {
                 timeline.play();
                 getChildren().addAll(aide4);
 */
+
+
