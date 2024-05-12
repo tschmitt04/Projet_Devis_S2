@@ -8,6 +8,8 @@ package fr.insa.schmitt.projet_devis_s2;
  *
  * @author Elève
  */
+import static fr.insa.schmitt.projet_devis_s2.Devis.hauteur;
+import static fr.insa.schmitt.projet_devis_s2.Devis.largeur;
 import java.util.ArrayList;
 //creation de la class etage avec association de differente liste pour definir la composition de l'etage
 public class Etage {
@@ -88,7 +90,7 @@ public class Etage {
     public static double getSurfacetot(Etage etage){
         double surfacetot=0;
         for (Piece piece : etage.getPiece()){
-            surfacetot=surfacetot+Math.abs(Mur.getLargeur(piece.getMurHaut())*Mur.getLargeur(piece.getMurGauche()));
+            surfacetot=surfacetot+Math.abs((Mur.getLargeur(piece.getMurHaut())*Devis.getechellelongeur())*(Mur.getLargeur(piece.getMurGauche())*Devis.getechellelargeur()));
         }
         return(surfacetot);
     }

@@ -174,7 +174,7 @@ public class Sauvegarde {
                             c = txtrevetements.charAt(fin);
                         }
                         prix = txtrevetements.substring(debut,fin);
-                        debut = fin + 1;
+                        debut = fin + 1; 
                         Revetement newrevetement = new Revetement(Integer.parseInt(idrevetement),typerevetement,Integer.parseInt(idmur),Integer.parseInt(idsol),Integer.parseInt(idplafond),Double.parseDouble(prix));
                         newEtage.getRevetement().add(newrevetement);
                     }

@@ -38,6 +38,14 @@ public class Devis extends Application {
     static double largeur,hauteur;
     boolean validInput = false;
     
+    public static double getechellelargeur(){ 
+        return echellelargeur;
+    }
+    
+    public static double getechellelongeur(){ 
+        return echellelongueur;
+    }
+    
     
     @Override
     public void start(Stage primaryStage) {
@@ -91,9 +99,9 @@ public class Devis extends Application {
             gridPane.setHgap(10);
             gridPane.setVgap(10);
             gridPane.addRow(0, new Label("Type de bâtiment :"), typeBatimentComboBox);
-            gridPane.addRow(1, new Label("Largeur :"), largeurField);
-            gridPane.addRow(2, new Label("Longueur :"), longueurField);
-            gridPane.addRow(3, new Label("Nombre d'étages :"), nbEtagesField);
+            gridPane.addRow(1, new Label("Largeur du terrain :"), largeurField);
+            gridPane.addRow(2, new Label("Longueur du terrain :"), longueurField);
+            gridPane.addRow(3, new Label("Nombre d'étages de votre bâtiment :"), nbEtagesField);
             
         //création du batiment (si"ok")
         
@@ -112,15 +120,15 @@ public class Devis extends Application {
                         String selectedType = typeBatimentComboBox.getValue();
                         try {
                             if (selectedType == null) {
-                                throw new IllegalArgumentException("Veuillez sélectionner un type de bâtiment.");
+                                throw new IllegalArgumentException("Veuillez indiquer le type de bâtiment.");
                             }
-                            double largeurValue = Double.parseDouble(largeurText); 
+                            double largeurValue = Double.parseDouble(largeurText); //transition de chaine de caracteres en valeur double
                             double longueurValue = Double.parseDouble(longueurText);
                             int nbEtagesValue = Integer.parseInt(nbEtagesText);
                         
                             if (largeurValue > 0 && longueurValue > 0 && nbEtagesValue > 0) {
-                                echellelargeur = largeurValue / (hauteur - 250);  //Application d'un échelle sur la largeur du terrain
-                                echellelongueur = longueurValue / (largeur * 2 / 3 - 150); //d'une longueur
+                                echellelargeur = largeurValue / (hauteur-150);  //Application d'un échelle sur la largeur du terrain
+                                echellelongueur = longueurValue / ((largeur-50)-largeur*1/4); //d'une longueur
                                 nbetage = nbEtagesValue;
                                 type = selectedType;
                                 validInput = true;
@@ -139,7 +147,7 @@ public class Devis extends Application {
                             ah.showAndWait();
                         }
                     }
-                    return null;
+                    return null; 
                 });
                 dialog.showAndWait();
             }
@@ -157,6 +165,8 @@ public class Devis extends Application {
             Sauvegarde svg = new Sauvegarde();
             svg.lecture("sauvegarde.txt"); //Nom du fichier texte contenant la sauvegarde
         }
+        
+       
     }
     
     public static void main(String[] args) {
@@ -189,6 +199,7 @@ public class Devis extends Application {
         
         newEtage.getCoin().add(ch);
         newEtage.getCoin().add(cb);
+        
         newEtage.getCoin().add(coins1);
         newEtage.getCoin().add(coins2);
         newEtage.getCoin().add(coins3);
@@ -280,7 +291,8 @@ public class Devis extends Application {
         Scene scene = new Scene(new Interface(newEtage,largeur, hauteur), largeur, hauteur);
         scenes.add(scene);
     }
-        
+    
+      
     
     //pouvoir se rendre à un étage supérieur 
     public static void etageSuivant(double largeur, double hauteur) {
@@ -320,4 +332,6 @@ public class Devis extends Application {
     public static ArrayList<Scene> getScene(){ 
         return scenes;
     }
+    
+    
 }
