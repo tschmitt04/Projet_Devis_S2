@@ -310,17 +310,6 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
         switch (etage.getetape()) {
             
             case 0 -> {
-                /*Rectangle rectangle1=new Rectangle();//association d'un revetement au sol selectionné (affichage d'un rectangle plein)
-                rectangle1.setX(5);
-                rectangle1.setY(150);
-                rectangle1.setWidth(largeur*1/4-40);
-                rectangle1.setHeight(hauteur*1/3-150);
-                rectangle1.setFill(Color.LIGHTGREY);
-                Text text = new Text("Veuillez créer la cage d'escalier");
-                text.setX(20); // Position X du texte
-                text.setY(180); // Position Y du texte
-                text.setFill(Color.WHITE); // Couleur du texte
-                text.setFont(Font.font("Papyrus", FontWeight.BOLD, 17));*/
                 text.setText("Veuillez créer la cage d'escalier");
                 aide.setText("Veuillez créer la cage d'escalier");  
                 getChildren().addAll(aide, devis, devisetage, rectangle1, text, text1); //Création de l'escalier uniquement pour le rdc
@@ -330,24 +319,13 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
             
             
             
-            case 1 -> { // Création des pièces
-                /*ComboBox<String> bouton1 = new ComboBox<>();
-                bouton1.setLayoutX(largeur*2/3);
-                bouton1.setLayoutY(70);
-                bouton1.setPromptText("Choisissez la pièce");
-                for (int i=0; i<2; i++){
-                    bouton1.getItems().add(String.valueOf(i));
-                }               
-                
-                bouton1.getSelectionModel().selectedItemProperty().addListener(choixAppartListener);*/ 
+            case 1 -> { 
                 for (int i=0 ; i<2;i++) {
                     Button button=Bouton.boutons.get(i);
                     getChildren().add(button);
                 }
-                
-                            
-                aide2.setText("Surface totale : "+Math.round(Etage.getSurfacetot(etage))+" m²\n(arrondie de :"+Etage.getSurfacetot(etage)+"m²)\n \nSurface terrain : "+Math.round((Mur.getLargeur(etage.getMur().get(1))*Devis.getechellelongeur())*(Mur.getLargeur(etage.getMur().get(2))*Devis.getechellelargeur()))+" m²\n(arrondie de :"+(Mur.getLargeur(etage.getMur().get(1))*Devis.getechellelongeur())*(Mur.getLargeur(etage.getMur().get(2))*Devis.getechellelargeur())+"m²)");
-                getChildren().addAll(aide, aide2, devis,devisetage,idetage,Bouton.boutons.get(5), rectangle1, text, text1);
+                aide2.setText("Surface totale : "+Math.round(Etage.getSurfacetot(etage))+" m²\n(arrondie de :"+Etage.getSurfacetot(etage)+" m²)\n \nSurface terrain : "+Math.round((Mur.getLargeur(etage.getMur().get(1))*Devis.getechellelongeur())*(Mur.getLargeur(etage.getMur().get(2))*Devis.getechellelargeur()))+" m²\n(arrondie de :"+(Mur.getLargeur(etage.getMur().get(1))*Devis.getechellelongeur())*(Mur.getLargeur(etage.getMur().get(2))*Devis.getechellelargeur())+" m²)");
+                getChildren().addAll(aide, aide2, devis, devisetage, idetage, Bouton.boutons.get(5), rectangle1, text, text1);
             }
             
             
@@ -366,7 +344,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                         String userInput = result.get();
                         nbappart = Integer.parseInt(userInput);
                         try {
-                            if (nbappart > 0&&nbappart<etage.getPiece().size()) {
+                            if (nbappart > 0 && nbappart<etage.getPiece().size()) {
                                 validInput = true;
                                 etage.setEtape(3);
                             } else {
@@ -483,6 +461,8 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
             }  
             getChildren().add(lineMur);
         }
+        
+        
             //Affichage de tous les coins par des cerlces
         for (int i =2; i<etage.getCoin().size();i++) {
             Coin coin = etage.getCoin().get(i);
@@ -494,6 +474,8 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
             }
             getChildren().add(cercle);
         }
+        
+        
         //affichage des ouvertures comme ligne très épaisse sur un mur de couleur et taille differente selon le type choisi
         
         for (Ouverture ouv : etage.getOuverture()){
@@ -1047,7 +1029,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                 etage.getCoin().remove(deuxiemecoin);
             }
         //Calcul pour savoir si l'utilisateur à rempli l'étage de pièce
-            if(Math.abs(Etage.getSurfacetot(etage)-Mur.getLargeur(etage.getMur().get(1))*Mur.getLargeur(etage.getMur().get(2)))<2){
+            if(Math.abs(Etage.getSurfacetot(etage)-(Mur.getLargeur(etage.getMur().get(1))*Devis.getechellelongeur())*(Mur.getLargeur(etage.getMur().get(2))*Devis.getechellelargeur()))<2){
                 etage.setEtape(2);
                 Bouton.appart=true;
             }
