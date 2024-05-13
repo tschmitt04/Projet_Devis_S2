@@ -253,7 +253,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
         
         
         
-        Button validation = Bouton.creationbouton("Valider", largeur * 2 / 3 - 150, hauteur - 150, () -> {
+        Button validation = Bouton.creationbouton("Valider", largeur*1/4+20, hauteur - 75, () -> {
             switch (etage.getetape()) {
                 case 3 -> {
                     if (appart()+1==getNbpiece()){
@@ -368,8 +368,8 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
             
             case 3 -> {//menu déroulant des appartements
                 getChildren().addAll(boutonAppart, aide,validation,idetage,Bouton.boutons.get(5),rectangle1, text, text1);
-                text.setText("mettre une aide je sais\n meme pas comment ca marche\n (ligne316 du code)");
-                aide.setText("mettre une aide je sais\n meme pas comment ca marche\n (ligne316 du code)");
+                text.setText("Cliquez sur le bouton Valider pour\npasser à l'étape suivante");
+                aide.setText("Cliquez sur le bouton Valider pour\npasser à l'étape suivante");
             }
             
             
@@ -1029,7 +1029,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                 etage.getCoin().remove(deuxiemecoin);
             }
         //Calcul pour savoir si l'utilisateur à rempli l'étage de pièce
-            if(Math.abs(Etage.getSurfacetot(etage)-(Mur.getLargeur(etage.getMur().get(1))*Devis.getechellelongeur())*(Mur.getLargeur(etage.getMur().get(2))*Devis.getechellelargeur()))<2){
+            if(Math.abs(Etage.getSurfacetot(etage)-(Mur.getLargeur(etage.getMur().get(1))*Devis.getechellelongeur())*(Mur.getLargeur(etage.getMur().get(2))*Devis.getechellelargeur()))<1){
                 etage.setEtape(2);
                 Bouton.appart=true;
             }
