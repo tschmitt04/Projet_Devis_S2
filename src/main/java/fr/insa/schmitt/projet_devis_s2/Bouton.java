@@ -135,46 +135,57 @@ public class Bouton {
     //Selon la surface choisie différents type de revêtement apparaissent
     public static void typerev(String surface){
         switch (surface){
-            case "Sol" -> { 
-                revetement = Choix("Choisir le revêtement du sol",
+            case "Sol" -> {
+                revetement = Choix ("Choisir le revêtement du sol",
                         "Choisir le revêtement du sol :", 
-                        "Carrelage",
-                        "Parquet", 
-                        "Bardage", 
+                        "Carrelage 1",
+                        "Carrelage 2",
+                        "Carrelage 3",
+                        "Parquet",
+                        "Marbre",
                         "Moquette",
                         "Vinyle Lino",
-                        "Stratifie");
+                        "Stratifie",
+                        "Liège",
+                        "Lambris 1");
                 rev = true;
             }
 
-            case "Mur Intérieur" -> { 
-                revetement = Choix("Choisir le revêtement du mur intérieur",
+            case "Mur Intérieur" -> {
+                revetement = Choix ("Choisir le revêtement du mur intérieur",
                         "Choisir le revêtement du mur intérieur :",
-                        "Peinture",
-                        "Carrelage",
-                        "Parquet",
-                        "Bardage",
-                        "Lambris",
-                        "Liège");
+                        "Peinture 1",
+                        "Peinture 2",
+                        "Peinture 3",
+                        "Carrelage 1",
+                        "Carrelage 2",
+                        "Carrelage 3",
+                        "Marbre",
+                        "Plaquettes de parement",
+                        "Lambris 1",
+                        "Lambris 2",
+                        "Liège",
+                        "Crépi",
+                        "Papier Peint");
                 rev=true;
             }
-            
-            case "Mur Extérieur" -> { 
-                revetement = Choix("Choisir le revêtement du mur extérieur",
+            case "Mur Extérieur" -> {
+                revetement = Choix ("Choisir le revêtement du mur extérieur",
                         "Choisir le revêtement du mur extérieur :",
-                        "Peinture",
-                        "Bardage",
-                        "Crépis");
+                        "Lambris 1",
+                        "Lambris 2",
+                        "Plaquette de parement",
+                        "Crépi");
                 rev = true;
             }
-            
-            case "Plafond" -> { 
-                revetement = Choix("Choisir le revêtement du plafond",
+            case "Plafond" -> {
+                revetement = Choix ("Choisir le revêtement du plafond",
                         "Choisir le revêtement du plafond :",
-                        "Peinture",
-                        "Parquet",
-                        "Bardage",
-                        "Lambris");
+                        "Lambris 1",
+                        "Lambris 2",
+                        "Peinture 1",
+                        "Peinture 2",
+                        "Peinture 3");
                 rev=true;
             }
         }

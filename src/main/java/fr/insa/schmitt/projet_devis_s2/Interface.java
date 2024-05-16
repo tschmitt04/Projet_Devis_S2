@@ -455,10 +455,11 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
             Mur cote = etage.getMur().get(i);
             Line lineMur = new Line (cote.getDepart().getX(),cote.getDepart().getY(),cote.getArrivee().getX(),cote.getArrivee().getY());
                 switch (cote.getRevetement().getTypeRevetement()){
-                case "Peinture" -> lineMur.setStroke(Color.DARKORANGE);
-                case "Bardage" -> lineMur.setStroke(Color.BROWN);
-                case "Crépis" -> lineMur.setStroke(Color.BISQUE);
-                case " "-> lineMur.setStroke(Color.BLACK);
+                    case "Paquettes de parement" -> lineMur.setStroke(Color.BROWN);
+                    case "Crépi" -> lineMur.setStroke(Color.ALICEBLUE);
+                    case "Lambris 1" -> lineMur.setStroke(Color.DARKGOLDENROD);
+                    case "Lambris 2" -> lineMur.setStroke(Color.DARKGOLDENROD);
+                    case " "-> lineMur.setStroke(Color.BLACK);
             }  
             getChildren().add(lineMur);
         }
@@ -469,7 +470,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
             Coin coin = etage.getCoin().get(i);
             Circle cercle;
             if (coin == selectedCoin) {
-                cercle = new Circle(coin.getX(), coin.getY(), 5, Color.GREEN); //Bleu si coin selectionné
+                cercle = new Circle(coin.getX(), coin.getY(), 5, Color.LIME); //Bleu si coin selectionné
             } else {
                 cercle = new Circle(coin.getX(), coin.getY(), 5, Color.BLUE); //Rouge sinon
             }
@@ -482,7 +483,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
         for (Ouverture ouv : etage.getOuverture()){
             Line o = new Line(ouv.getXd(), ouv.getYd(), ouv.getXf(), ouv.getYf());
             o.setStrokeWidth(6);
-            o.setStroke(Color.RED);
+            o.setStroke(Color.LIME);
             getChildren().add(o);
         }
         
@@ -496,12 +497,17 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
             rectangle.setHeight(Mur.getLargeur(piece.getMurDroit())-10);
             
             switch(piece.getSol().getRevetement().getTypeRevetement()){
-                case "Carrelage" -> rectangle.setFill(Color.HONEYDEW);
-                case "Parquet" -> rectangle.setFill(Color.DARKSALMON);
-                case "Bardage" -> rectangle.setFill(Color.BEIGE);
-                case "Moquette" -> rectangle.setFill(Color.DARKSEAGREEN);
-                case "Vinyle Lino" -> rectangle.setFill(Color.LIGHTGRAY);
-                case "Stratifie" -> rectangle.setFill(Color.KHAKI);
+                case "Carrelage 1" -> rectangle.setFill(Color.CORNSILK);
+                case "Carrelage 2" -> rectangle.setFill(Color.DARKGREY);
+                case "Carrelage 3" -> rectangle.setFill(Color.BLANCHEDALMOND);
+                case "Parquet" -> rectangle.setFill(Color.NAVAJOWHITE);
+                case "Marbre" -> rectangle.setFill(Color.DARKGREY);
+                case "Moquette" -> rectangle.setFill(Color.MEDIUMBLUE);
+                case "Vinyle Lino" -> rectangle.setFill(Color.LIGHTYELLOW);
+                case "Stratifie" -> rectangle.setFill(Color.PERU);
+                case "Gazon" -> rectangle.setFill(Color.OLIVEDRAB);
+                case "Liège" -> rectangle.setFill(Color.BURLYWOOD);
+                case "Lambris 1" -> rectangle.setFill(Color.DARKGOLDENROD);
                 default -> rectangle.setFill(Color.WHITE);
             }
             getChildren().add(rectangle);
@@ -524,12 +530,19 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                     lineMur = new Line(mur.getDepart().getX(), mur.getDepart().getY(), mur.getArrivee().getX(), mur.getArrivee().getY());
                 }
                 switch (mur.getRevetement().getTypeRevetement()){
-                    case "Peinture" -> lineMur.setStroke(Color.DARKORANGE);
-                    case "Carrelage" -> lineMur.setStroke(Color.CORNFLOWERBLUE);
-                    case "Parquet" -> lineMur.setStroke(Color.INDIANRED);
-                    case "Bardage" -> lineMur.setStroke(Color.ANTIQUEWHITE);
-                    case "Lambris" -> lineMur.setStroke(Color.HOTPINK);
-                    case "Liège" -> lineMur.setStroke(Color.LIGHTPINK);
+                    case "Peinture 1" -> lineMur.setStroke(Color.BISQUE);
+                    case "Peinture 2" -> lineMur.setStroke(Color.AQUA);
+                    case "Peinture 3" -> lineMur.setStroke(Color.AQUAMARINE);
+                    case "Paquettes de parement" -> lineMur.setStroke(Color.BROWN);
+                    case "Crépi" -> lineMur.setStroke(Color.ALICEBLUE);
+                    case "Marbre" -> lineMur.setStroke(Color.DARKGREY);
+                    case "Papier Peint" -> lineMur.setStroke(Color.CRIMSON);
+                    case "Liège" -> lineMur.setStroke(Color.BURLYWOOD);
+                    case "Carrelage 1" -> lineMur.setStroke(Color.CORNSILK);
+                    case "Carrelage 2" -> lineMur.setStroke(Color.DARKGREY);
+                    case "Carrelage 3" -> lineMur.setStroke(Color.BLANCHEDALMOND);
+                    case "Lambris 1" -> lineMur.setStroke(Color.DARKGOLDENROD);
+                    case "Lambris 2" -> lineMur.setStroke(Color.DARKGOLDENROD);
                     case " "-> lineMur.setStroke(Color.BLACK);
                 }
                 getChildren().add(lineMur);
@@ -543,10 +556,11 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                 while (i<piece.getMurHaut().getArrivee().getX()-5){
                     Line newLine = new Line (i,piece.getMurHaut().getDepart().getY()+5,i,piece.getMurBas().getDepart().getY()-5);
                     switch(piece.getPlafond().getRevetement().getTypeRevetement()){
-                        case "Peinture" -> newLine.setStroke(Color.MAROON);
-                        case "Parquet" -> newLine.setStroke(Color.DARKSLATEBLUE);
-                        case "Bardage" -> newLine.setStroke(Color.TEAL);
-                        case "Lambris" -> newLine.setStroke(Color.PURPLE);
+                        case "Peinture 1" -> newLine.setStroke(Color.BISQUE);
+                        case "Peinture 2" -> newLine.setStroke(Color.AQUA);
+                        case "Peinture 3" -> newLine.setStroke(Color.AQUAMARINE);
+                        case "Lambris 1" -> newLine.setStroke(Color.DARKGOLDENROD);
+                        case "Lambris 2" -> newLine.setStroke(Color.DARKGOLDENROD);
                         case " "->newLine.setStroke(Color.WHITE);
                     }
                     i=i+25;
@@ -807,24 +821,45 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                                 || (mur.getDepart().getY()-mur.getArrivee().getY()!=0)  &&  (mur.getArrivee().getY()-mur.getDepart().getY()>0)&&(Math.abs(mur.getDepart().getX() - e.getX()) < 15)&&(e.getX()<mur.getDepart().getX()&&(e.getY()<mur.getArrivee().getY())&&(e.getY()>mur.getDepart().getY()))
                                 || (mur.getDepart().getY()-mur.getArrivee().getY()!=0)  &&  (mur.getArrivee().getY()-mur.getDepart().getY()<0)&&(Math.abs(mur.getDepart().getX() - e.getX()) < 15)&&(e.getX()>mur.getDepart().getX())&&(e.getY()>mur.getArrivee().getY())&&(e.getY()<mur.getDepart().getY())){
                             switch (Bouton.revetement){
-                                case "Peinture" -> {
-                                    updateRevetement(mur.getRevetement().getIdRevetement(), "Peinture", mur.getSurface(mur)*3);
+                                case "Peinture 1" -> {
+                                    updateRevetement(mur.getRevetement().getIdRevetement(),"Peinture 1",mur.getSurface(mur)*10.95);
                                     }
-                                case "Carrelage" -> {
-                                    updateRevetement(mur.getRevetement().getIdRevetement(), "Carrelage", mur.getSurface(mur)*7);
+                                case "Peinture 2" -> {
+                                    updateRevetement(mur.getRevetement().getIdRevetement(),"Peinture 2",mur.getSurface(mur)*77.30);
                                     }
-                                case "Parquet" -> {
-                                    updateRevetement(mur.getRevetement().getIdRevetement(), "Parquet", mur.getSurface(mur)*9);
+                                case "Peinture 3" -> {
+                                    updateRevetement(mur.getRevetement().getIdRevetement(),"Peinture 3",mur.getSurface(mur)*29.90);
                                     }
-                                case "Bardage" -> {
-                                    updateRevetement(mur.getRevetement().getIdRevetement(), "Bardage Bois", mur.getSurface(mur)*8);
+                                case "Carrelage 1" -> {
+                                    updateRevetement(mur.getRevetement().getIdRevetement(),"Carrelage 1",mur.getSurface(mur)*49.75);
                                     }
-                                case "Lambris" -> {
-                                    updateRevetement(mur.getRevetement().getIdRevetement(), "Lambris", mur.getSurface(mur)*5);
+                                case "Carrelage 2" -> {
+                                    updateRevetement(mur.getRevetement().getIdRevetement(),"Carrelage 2",mur.getSurface(mur)*89.45);
+                                    }
+                                case "Carrelage 3" -> {
+                                    updateRevetement(mur.getRevetement().getIdRevetement(),"Carrelage 3",mur.getSurface(mur)*10.35);
+                                    }
+                                case "Papier Peint" -> {
+                                    updateRevetement(mur.getRevetement().getIdRevetement(),"Papier Peint",mur.getSurface(mur)*32.90);
+                                    }
+                                case "Crépi" -> {
+                                    updateRevetement(mur.getRevetement().getIdRevetement(),"Crépi",mur.getSurface(mur)*67.80);
+                                    }
+                                case "Lambris 1" -> {
+                                    updateRevetement(mur.getRevetement().getIdRevetement(),"Lambris 1",mur.getSurface(mur)*50.60);
+                                    }
+                                case "Lambris 2" -> {
+                                    updateRevetement(mur.getRevetement().getIdRevetement(),"Lambris 2",mur.getSurface(mur)*42.50);
                                     }
                                 case "Liège" -> {
-                                    updateRevetement(mur.getRevetement().getIdRevetement(), "Liege", mur.getSurface(mur)*4);
+                                    updateRevetement(mur.getRevetement().getIdRevetement(),"Liege",mur.getSurface(mur)*33.90);
                                     }
+                                case "Marbre" -> {
+                                    updateRevetement(mur.getRevetement().getIdRevetement(),"Marbre",mur.getSurface(mur)*33.90);
+                                    }
+                                case "Plaquettes de parement" -> {
+                                    updateRevetement(mur.getRevetement().getIdRevetement(),"Plaquettes de parement",mur.getSurface(mur)*15.20);
+                                }
                             }
                             updateMur(mur.getidMur(), mur.getRevetement()); 
                         }
@@ -836,14 +871,20 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                         if ((mur.getDepart().getX()-mur.getArrivee().getX()!=0)  && (Math.abs(mur.getDepart().getY() - e.getY()) < 15)
                                 || (mur.getDepart().getY()-mur.getArrivee().getY()!=0) && (Math.abs(mur.getDepart().getX() - e.getX()) < 15)){
                             switch (Bouton.revetement){
-                                case "Crépis" -> {
-                                    updateRevetement(mur.getRevetement().getIdRevetement(),"Crépis",mur.getSurface(mur)*5);
+                                case "Crépi" -> {
+                                    updateRevetement(mur.getRevetement().getIdRevetement(),"Crépi",mur.getSurface(mur)*5);
                                     }
-                                case "Peinture" -> {
-                                    updateRevetement(mur.getRevetement().getIdRevetement(),"Peinture",mur.getSurface(mur)*3);
+                                case "Peinture 1" -> {
+                                    updateRevetement(mur.getRevetement().getIdRevetement(),"Peinture 1",mur.getSurface(mur)*10.95);
                                     }
-                                case "Bardage" -> {
-                                    updateRevetement(mur.getRevetement().getIdRevetement(),"Bardage Bois",mur.getSurface(mur)*8);
+                                case "Peinture 2" -> {
+                                    updateRevetement(mur.getRevetement().getIdRevetement(),"Peinture 2",mur.getSurface(mur)*77.30);
+                                    }
+                                case "Peinture 3" -> {
+                                    updateRevetement(mur.getRevetement().getIdRevetement(),"Peinture 3",mur.getSurface(mur)*29.90);
+                                    }
+                                case "Plaquettes de parement" -> {
+                                    updateRevetement(mur.getRevetement().getIdRevetement(),"Plaquettes de parement",mur.getSurface(mur)*15.20);
                                     }
                             }
                             updateMur(mur.getidMur(),mur.getRevetement());
@@ -855,24 +896,33 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                         if((x>sol.getMurGauche().getDepart().getX())&&(x<sol.getMurDroit().getArrivee().getX())&&
                                 (y>sol.getMurHaut().getDepart().getY())&&(y<sol.getMurBas().getArrivee().getY())){
                             switch (Bouton.revetement){
-                                case "Carrelage" -> {
-                                    updateRevetement(sol.getSol().getRevetement().getIdRevetement(),"Carrelage",sol.getSurface(sol.getMurHaut(),sol.getMurGauche())*7);
+                                case "Carrelage 1" -> {
+                                    updateRevetement(sol.getSol().getRevetement().getIdRevetement(),"Carrelage 1",sol.getSurface(sol.getMurHaut(),sol.getMurGauche())*49.75);
+                                    }
+                                 case "Carrelage 2" -> {
+                                    updateRevetement(sol.getSol().getRevetement().getIdRevetement(),"Carrelage 2",sol.getSurface(sol.getMurHaut(),sol.getMurGauche())*89.45);
+                                    }
+                                  case "Carrelage 3" -> {
+                                    updateRevetement(sol.getSol().getRevetement().getIdRevetement(),"Carrelage 3",sol.getSurface(sol.getMurHaut(),sol.getMurGauche())*10.35);
                                     }
                                 case "Parquet" -> {
-                                    updateRevetement(sol.getSol().getRevetement().getIdRevetement(),"Parquet",sol.getSurface(sol.getMurHaut(),sol.getMurGauche())*9);
+                                    updateRevetement(sol.getSol().getRevetement().getIdRevetement(),"Parquet",sol.getSurface(sol.getMurHaut(),sol.getMurGauche())*46.36);
                                     }
-                                case "Bardage" -> {
-                                    updateRevetement(sol.getSol().getRevetement().getIdRevetement(),"Bardage",sol.getSurface(sol.getMurHaut(),sol.getMurGauche())*8);
+                                case "Gazon" -> {
+                                    updateRevetement(sol.getSol().getRevetement().getIdRevetement(),"Gazon",sol.getSurface(sol.getMurHaut(),sol.getMurGauche())*17.95);
                                     }
                                 case "Moquette" -> {
-                                    updateRevetement(sol.getSol().getRevetement().getIdRevetement(),"Moquette",sol.getSurface(sol.getMurHaut(),sol.getMurGauche())*12);
+                                    updateRevetement(sol.getSol().getRevetement().getIdRevetement(),"Moquette",sol.getSurface(sol.getMurHaut(),sol.getMurGauche())*48.10);
                                     }
                                 case "Vinyle Lino" -> {
-                                    updateRevetement(sol.getSol().getRevetement().getIdRevetement(),"Vinyle Lino",sol.getSurface(sol.getMurHaut(),sol.getMurGauche())*5.5);
+                                    updateRevetement(sol.getSol().getRevetement().getIdRevetement(),"Vinyle Lino",sol.getSurface(sol.getMurHaut(),sol.getMurGauche())*23.55);
                                     }
                                 case "Stratifie" -> {
-                                    updateRevetement(sol.getSol().getRevetement().getIdRevetement(),"Stratifie",sol.getSurface(sol.getMurHaut(),sol.getMurGauche())*4.5);
+                                    updateRevetement(sol.getSol().getRevetement().getIdRevetement(),"Stratifie",sol.getSurface(sol.getMurHaut(),sol.getMurGauche())*31.99);
                                     }
+                                case "Lambris 1" -> {
+                                    updateRevetement(sol.getSol().getRevetement().getIdRevetement(),"Lambris 1",sol.getSurface(sol.getMurHaut(),sol.getMurGauche())*50.60);
+                                }
                             }
                             updateSol(sol.getSol().getidsol(),sol.getSol().getRevetement());
                         }
@@ -883,17 +933,20 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                         if((x>plafond.getMurGauche().getDepart().getX())&&(x<plafond.getMurDroit().getArrivee().getX())&&
                                 (y>plafond.getMurHaut().getDepart().getY())&&(y<plafond.getMurBas().getArrivee().getY())){
                             switch (Bouton.revetement){
-                                case "Peinture" -> {
-                                    updateRevetement(plafond.getPlafond().getRevetement().getIdRevetement(),"Peinture",plafond.getSurface(plafond.getMurHaut(),plafond.getMurGauche())*3);
+                                case "Peinture 1" -> {
+                                    updateRevetement(plafond.getPlafond().getRevetement().getIdRevetement(),"Peinture 1",plafond.getSurface(plafond.getMurHaut(),plafond.getMurGauche())*10.95);
                                     }
-                                case "Parquet" -> {
-                                    updateRevetement(plafond.getPlafond().getRevetement().getIdRevetement(),"Parquet",plafond.getSurface(plafond.getMurHaut(),plafond.getMurGauche())*9);
+                                case "Peinture 2" -> {
+                                    updateRevetement(plafond.getPlafond().getRevetement().getIdRevetement(),"Peinture 2",plafond.getSurface(plafond.getMurHaut(),plafond.getMurGauche())*77.30);
                                     }
-                                case "Bardage" -> {
-                                    updateRevetement(plafond.getPlafond().getRevetement().getIdRevetement(),"Bardage Bois",plafond.getSurface(plafond.getMurHaut(),plafond.getMurGauche())*8);
+                                case "Peinture 3" -> {
+                                    updateRevetement(plafond.getPlafond().getRevetement().getIdRevetement(),"Peinture 3",plafond.getSurface(plafond.getMurHaut(),plafond.getMurGauche())*29.90);
                                     }
-                                case "Lambris" -> {
-                                    updateRevetement(plafond.getPlafond().getRevetement().getIdRevetement(),"Lambris",plafond.getSurface(plafond.getMurHaut(),plafond.getMurGauche())*5);
+                                case "Lambris 1" -> {
+                                    updateRevetement(plafond.getPlafond().getRevetement().getIdRevetement(),"Lambris 1",plafond.getSurface(plafond.getMurHaut(),plafond.getMurGauche())*50.60);
+                                    }
+                                case "Lambris 2" -> {
+                                    updateRevetement(plafond.getPlafond().getRevetement().getIdRevetement(),"Lambris 2",plafond.getSurface(plafond.getMurHaut(),plafond.getMurGauche())*42.50);
                                     }
                                 }
                             }
@@ -920,10 +973,10 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
             int largeurouv;
                 switch(Bouton.ouverture){
                     case "Porte" -> {
-                        largeurouv=50;
+                        largeurouv=20;
                     }
                     case "Fenêtre" -> {
-                        largeurouv=20;  
+                        largeurouv=50;  
                     }
                     default -> {
                         largeurouv=0;
