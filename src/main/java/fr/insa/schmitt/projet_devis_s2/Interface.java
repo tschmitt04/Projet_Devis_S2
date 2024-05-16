@@ -92,7 +92,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
         interfaces.add(this);
         
 
-    // Ajoutez les lignes pour définir l'image d'arrière-plan
+   
     
     Image grue = new Image("file:grue.jpg");
         BackgroundImage backgroundImage = new BackgroundImage(grue, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
@@ -122,7 +122,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
         }
     }
     
-    public void updateOuverture(int idouv, double xd, double yd,double xf, double yf) {
+    public void updateOuverture(int idouv, double xd, double yd, double xf, double yf) {
         for (Ouverture ouv : etage.getOuverture()) {
             if (ouv.getidouv() == idouv) {
                 ouv.setXd(xd);
@@ -165,7 +165,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
         }
     }
     
-    public void updateRevetement(int idrev, String typerev,double prix){
+    public void updateRevetement(int idrev, String typerev, double prix){
         for(Revetement rev : etage.getRevetement()){
             if (rev.getIdRevetement()== idrev) {
                 rev.setTypeRevetement(typerev);
@@ -189,10 +189,10 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
         getChildren().clear();
         
         // Définition de la position des différents labels et boutons
-        imageView.setLayoutX(largeur * 2 / 3);
+        imageView.setLayoutX(largeur*2/3);
         imageView.setLayoutY(180);
-        imageView.setFitWidth(largeur * 1 / 3);
-        imageView.setFitHeight(largeur * 1 / 3);
+        imageView.setFitWidth(largeur*1/3);
+        imageView.setFitHeight(largeur*1/3);
        
         
         aide.setLayoutX(20);
@@ -214,12 +214,12 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
         
         devis.setLayoutX(largeur*1/4);
         devis.setLayoutY(10);
-        devis.setFont(new Font("Papyrus",15));
+        devis.setFont(new Font("Papyrus", 15));
         devis.setText ("Le prix du bâtiment est de : "+getPrix()+"euros");
         
         devisetage.setLayoutX(largeur*1/4);
         devisetage.setLayoutY(hauteur-75);
-        devisetage.setFont(new Font("Papyrus",15));
+        devisetage.setFont(new Font("Papyrus", 15));
         devisetage.setText ("Le devis pour cet étage est de : "+getPrixEtage()+"euros");
         
         //Bouton indiquant le numéro de l'étage actuelle (sous forme de bouton pour une question d'esthétisme même s'il pourrait être défini comme un Label
@@ -227,14 +227,14 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
         idetage.setLayoutX(largeur*2/3-120);
         idetage.setLayoutY(hauteur-75); 
         
-        Rectangle rectangle1=new Rectangle();//association d'un revetement au sol selectionné (affichage d'un rectangle plein)
+        Rectangle rectangle1 = new Rectangle();//association d'un revetement au sol selectionné (affichage d'un rectangle plein)
         rectangle1.setX(5);
         rectangle1.setY(150);
         rectangle1.setWidth(largeur*1/4-40);
         rectangle1.setHeight(hauteur*1/3-150);
         rectangle1.setFill(Color.LIGHTGREY);
         
-        Rectangle rectangle2=new Rectangle();//association d'un revetement au sol selectionné (affichage d'un rectangle plein)
+        Rectangle rectangle2 = new Rectangle();//association d'un revetement au sol selectionné (affichage d'un rectangle plein)
         rectangle2.setX(5);
         rectangle2.setY(150);
         rectangle2.setWidth(largeur*1/4-40);
@@ -286,6 +286,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
         boutonAppart.setLayoutX(20);
         boutonAppart.setLayoutY(70);
         boutonAppart.setPromptText("Sélectionnez le numéro de l'appartement");
+        
         for (int i =1; i<nbappart+1;i++){
             boutonAppart.getItems().add(String.valueOf(i));
         }
@@ -381,7 +382,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                     Button button=Bouton.boutons.get(i);
                     getChildren().add(button);
                 }
-                getChildren().addAll(aide, devis,devisetage,idetage,Bouton.boutons.get(5),rectangle1, text, text1);
+                getChildren().addAll(aide, devis, devisetage, idetage, Bouton.boutons.get(5), rectangle1, text, text1);
             }
             
             
@@ -405,7 +406,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                     getChildren().add(validation);
                 }
                 getChildren().add(Bouton.boutons.get(4));
-                getChildren().addAll(aide, aide2, devis,devisetage, idetage, rectangle1, text, text1);
+                getChildren().addAll(aide, aide2, devis, devisetage, idetage, rectangle1, text, text1);
                 getChildren().add(imageView);
             }
             
@@ -479,7 +480,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
         //affichage des ouvertures comme ligne très épaisse sur un mur de couleur et taille differente selon le type choisi
         
         for (Ouverture ouv : etage.getOuverture()){
-            Line o = new Line(ouv.getXd(),ouv.getYd(),ouv.getXf(),ouv.getYf());
+            Line o = new Line(ouv.getXd(), ouv.getYd(), ouv.getXf(), ouv.getYf());
             o.setStrokeWidth(6);
             o.setStroke(Color.RED);
             getChildren().add(o);
@@ -488,9 +489,11 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
         for (Piece piece : etage.getPiece()) {
             Label typepiece = new Label();
             Label appart = new Label();
-            Rectangle rectangle=new Rectangle();    //association d'un revetement au sol selectionné (affichage d'un rectangle plein)
-            rectangle.setX(piece.getMurHaut().getDepart().getX()+5);rectangle.setY(piece.getMurHaut().getDepart().getY()+5);
-            rectangle.setWidth(Mur.getLargeur(piece.getMurHaut())-10);rectangle.setHeight(Mur.getLargeur(piece.getMurDroit())-10);
+            Rectangle rectangle = new Rectangle();    //association d'un revetement au sol selectionné (affichage d'un rectangle plein)
+            rectangle.setX(piece.getMurHaut().getDepart().getX()+5);
+            rectangle.setY(piece.getMurHaut().getDepart().getY()+5);
+            rectangle.setWidth(Mur.getLargeur(piece.getMurHaut())-10);
+            rectangle.setHeight(Mur.getLargeur(piece.getMurDroit())-10);
             
             switch(piece.getSol().getRevetement().getTypeRevetement()){
                 case "Carrelage" -> rectangle.setFill(Color.HONEYDEW);
@@ -581,14 +584,14 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
         redraw();
         double x = e.getX();//Récupération des coordonnées
         double y = e.getY();
-        boolean deja=false;
+        boolean deja = false;
         
         //si l'escalier n'a pas deja ete fait, il est créé en premier sur l'etage
         if (etage.getetape()==0){
-            Bouton.usage="Escalier";
-          if (premierCoin ==null){  
+            Bouton.usage = "Escalier";
+          if (premierCoin == null){  
                 for (Coin cote : etage.getCoin()) {
-                        if (Math.abs(cote.getX() - e.getX()) < 20 && Math.abs(cote.getY() - e.getY()) < 20) {
+                        if (Math.abs(cote.getX()-e.getX())<20  &&  Math.abs(cote.getY()-e.getY())<20) {
                                 premierCoin = cote;
                                 selectedCoin = cote;
                                 text.setText("Veuillez maintenant placer un coin");
@@ -599,7 +602,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                 }
           }else{
             for (Coin coin : etage.getCoin()){
-                if (Math.abs(coin.getX() - e.getX()) < 20 && Math.abs(coin.getY() - e.getY()) < 20) {
+                if (Math.abs(coin.getX()-e.getX())<20  &&  Math.abs(coin.getY()-e.getY())<20) {
                     if (coin==selectedCoin){
                         text.setText("Vous avez déjà sélectionner ce coin");
                         aide.setText("Vous avez déjà sélectionner ce coin");
@@ -609,20 +612,20 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                             timeline.play();*/
                            
                     }
-                }else if ((x>etage.getMur().get(4).getDepart().getX())&&(x<etage.getMur().get(2).getArrivee().getX())&&
-                         (y>etage.getMur().get(1).getDepart().getY())&&(y<etage.getMur().get(3).getArrivee().getY())){  
+                }else if ( (x>etage.getMur().get(4).getDepart().getX())  &&  (x<etage.getMur().get(2).getArrivee().getX())&&
+                         (y>etage.getMur().get(1).getDepart().getY())  &&  (y<etage.getMur().get(3).getArrivee().getY()) ){  
                         Coin deuxiemeesca = new Coin(Coin.getLastIdcoin(), x, y, etage.getIdetage());
                         creationpiece(deuxiemeesca,deja);
-                    selectedCoin=null;
-                    premierCoin=null;
-                    Bouton.piece=false;
-                    etage.setEtape(1);
+                    selectedCoin = null;
+                    premierCoin = null;
+                    Bouton.piece = false;
+                    etage.setEtape(1); 
                     break;
                 }
             }
           }
         }              
-        
+         
         
         
         
@@ -632,7 +635,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
             if (premierCoin == null) {
                 for (Coin cote : etage.getCoin()) {
                     //selection d'un coin dans une rayon de 20 pixels
-                    if (Math.abs(cote.getX() - e.getX()) < 20 && Math.abs(cote.getY() - e.getY()) < 20) {
+                    if (Math.abs(cote.getX()-e.getX())<20  &&  Math.abs(cote.getY()-e.getY())<20) {
                         premierCoin = cote;
                         selectedCoin = cote;         
                         aide.setText("Veuillez maintenant placer un coin\n sur un mur existant, ou sur un autre\n coin");
@@ -647,7 +650,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
             } else {
                 //pose du deuxieme coin
                 for (Coin coin : etage.getCoin()) {
-                    if (Math.abs(coin.getX() - e.getX()) < 20 && Math.abs(coin.getY() - e.getY()) < 20) {
+                    if (Math.abs(coin.getX()-e.getX())<20  &&  Math.abs(coin.getY()-e.getY())<20) {
                         if (coin == selectedCoin) {
                             aide.setText("Vous avez déjà sélectionné ce coin là");
                             text.setText("Vous avez déjà sélectionné ce coin là");
@@ -678,9 +681,9 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                             
                             break;
                         } else {
-                            deja=true;
+                            deja = true;
                             creationpiece(coin,deja);
-                            premierCoin=null;
+                            premierCoin = null;
                             selectedCoin = null;
                             Bouton.piece = false;
                             redraw();
@@ -688,35 +691,39 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                     }
                 }
                 //verification que la piece n'est pas de coins à l'interieur d'une autre 
-                if ((x > etage.getMur().get(4).getDepart().getX()) && (x < etage.getMur().get(2).getArrivee().getX())
-                        && (y > etage.getMur().get(1).getDepart().getY()) && (y < etage.getMur().get(3).getArrivee().getY())) {
+                if ( (x > etage.getMur().get(4).getDepart().getX())  &&  (x < etage.getMur().get(2).getArrivee().getX())
+                        && (y > etage.getMur().get(1).getDepart().getY())  &&  (y < etage.getMur().get(3).getArrivee().getY()) ) {
                     boolean insidePiece = false;
                     for (Piece piece : etage.getPiece()) {
-                        if ((x > piece.getMurGauche().getArrivee().getX()) && (x < piece.getMurDroit().getDepart().getX())
-                                && (y > piece.getMurHaut().getArrivee().getY()) && (y < piece.getMurBas().getDepart().getY())) {
+                        if ((x > piece.getMurGauche().getArrivee().getX())  &&  (x < piece.getMurDroit().getDepart().getX())
+                                && (y > piece.getMurHaut().getArrivee().getY())  &&  (y < piece.getMurBas().getDepart().getY())) {
                             insidePiece = true;
                         }
                     }
                     //si ce n'est pas le cas
                     if (!insidePiece) {
-                            double xcoin=0,ycoin=0;
+                            double xcoin=0, ycoin=0;
                             for (Piece piece : etage.getPiece()){
                                 for (Mur mur : piece.getMurs()){
                                     if (mur==piece.getMurHaut()){
-                                        if(Math.abs(piece.getMurHaut().getDepart().getY() - e.getY()) < 25){
-                                            xcoin=x;ycoin=mur.getDepart().getY();
+                                        if(Math.abs(piece.getMurHaut().getDepart().getY()-e.getY()) < 25){
+                                            xcoin=x;
+                                            ycoin=mur.getDepart().getY();
                                         }
                                     }else if (mur==piece.getMurDroit()){
-                                        if(Math.abs(piece.getMurDroit().getDepart().getX() - e.getX()) < 25){
-                                            xcoin=mur.getDepart().getX();ycoin=y;
+                                        if(Math.abs(piece.getMurDroit().getDepart().getX()-e.getX()) < 25){
+                                            xcoin=mur.getDepart().getX();
+                                            ycoin=y;
                                         }
                                     }else if (mur==piece.getMurBas()){
-                                        if(Math.abs(piece.getMurBas().getDepart().getY() - e.getY()) < 25){
-                                            xcoin=x;ycoin=mur.getDepart().getY();
+                                        if(Math.abs(piece.getMurBas().getDepart().getY()-e.getY()) < 25){
+                                            xcoin=x;
+                                            ycoin=mur.getDepart().getY();
                                         }
                                     }else if (mur==piece.getMurGauche()){
-                                        if(Math.abs(piece.getMurGauche().getDepart().getX() - e.getX()) < 25){
-                                            xcoin=mur.getDepart().getX();ycoin=y;
+                                        if(Math.abs(piece.getMurGauche().getDepart().getX()-e.getX()) < 25){
+                                            xcoin=mur.getDepart().getX();
+                                            ycoin=y;
                                         }
                                     }
                                 }    
@@ -724,20 +731,24 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                             for (int i=5;i<etage.getMur().size();i++){
                                 Mur mur = etage.getMur().get(i);
                                 if (mur==etage.getMur().get(1)){
-                                        if(Math.abs(etage.getMur().get(1).getDepart().getY() - e.getY()) < 25){
-                                            xcoin=x;ycoin=mur.getDepart().getY();
+                                        if(Math.abs(etage.getMur().get(1).getDepart().getY()-e.getY()) < 25){
+                                            xcoin=x;
+                                            ycoin=mur.getDepart().getY();
                                         }
                                     }else if (mur==etage.getMur().get(2)){
-                                        if(Math.abs(etage.getMur().get(2).getDepart().getX() - e.getX()) < 25){
-                                            xcoin=mur.getDepart().getX();ycoin=y;
+                                        if(Math.abs(etage.getMur().get(2).getDepart().getX()-e.getX()) < 25){
+                                            xcoin=mur.getDepart().getX();
+                                            ycoin=y;
                                         }
                                     }else if (mur==etage.getMur().get(3)){
-                                        if(Math.abs(etage.getMur().get(3).getDepart().getY() - e.getY()) < 25){
-                                            xcoin=x;ycoin=mur.getDepart().getY();
+                                        if(Math.abs(etage.getMur().get(3).getDepart().getY()-e.getY()) < 25){
+                                            xcoin=x;
+                                            ycoin=mur.getDepart().getY();
                                         }
                                     }else if (mur==etage.getMur().get(4)){
-                                        if(Math.abs(etage.getMur().get(4).getDepart().getX() - e.getX()) < 25){
-                                            xcoin=mur.getDepart().getX();ycoin=y;
+                                        if(Math.abs(etage.getMur().get(4).getDepart().getX()-e.getX()) < 25){
+                                            xcoin=mur.getDepart().getX();
+                                            ycoin=y;
                                         }
                                     }
                             }
@@ -792,38 +803,38 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                     for (int i=5;i<etage.getMur().size();i++){
                         Mur mur = etage.getMur().get(i);
                         if ((mur.getDepart().getX()-mur.getArrivee().getX()!=0)&&(mur.getArrivee().getX()-mur.getDepart().getX()>0)&&(Math.abs(mur.getDepart().getY() - e.getY()) < 15)&&(e.getY()>mur.getDepart().getY()&&(e.getX()<mur.getArrivee().getX())&&(e.getX()>mur.getDepart().getX()))
-                                ||(mur.getDepart().getX()-mur.getArrivee().getX()!=0)&&(mur.getArrivee().getX()-mur.getDepart().getX()<0)&&(Math.abs(mur.getDepart().getY() - e.getY()) < 15)&&(e.getY()<mur.getDepart().getY()&&(e.getX()>mur.getArrivee().getX())&&(e.getX()<mur.getDepart().getX()))
-                                || (mur.getDepart().getY()-mur.getArrivee().getY()!=0)&&(mur.getArrivee().getY()-mur.getDepart().getY()>0)&&(Math.abs(mur.getDepart().getX() - e.getX()) < 15)&&(e.getX()<mur.getDepart().getX()&&(e.getY()<mur.getArrivee().getY())&&(e.getY()>mur.getDepart().getY()))
-                                || (mur.getDepart().getY()-mur.getArrivee().getY()!=0)&&(mur.getArrivee().getY()-mur.getDepart().getY()<0)&&(Math.abs(mur.getDepart().getX() - e.getX()) < 15)&&(e.getX()>mur.getDepart().getX())&&(e.getY()>mur.getArrivee().getY())&&(e.getY()<mur.getDepart().getY())){
+                                ||(mur.getDepart().getX()-mur.getArrivee().getX()!=0)  &&  (mur.getArrivee().getX()-mur.getDepart().getX()<0)&&(Math.abs(mur.getDepart().getY() - e.getY()) < 15)&&(e.getY()<mur.getDepart().getY()&&(e.getX()>mur.getArrivee().getX())&&(e.getX()<mur.getDepart().getX()))
+                                || (mur.getDepart().getY()-mur.getArrivee().getY()!=0)  &&  (mur.getArrivee().getY()-mur.getDepart().getY()>0)&&(Math.abs(mur.getDepart().getX() - e.getX()) < 15)&&(e.getX()<mur.getDepart().getX()&&(e.getY()<mur.getArrivee().getY())&&(e.getY()>mur.getDepart().getY()))
+                                || (mur.getDepart().getY()-mur.getArrivee().getY()!=0)  &&  (mur.getArrivee().getY()-mur.getDepart().getY()<0)&&(Math.abs(mur.getDepart().getX() - e.getX()) < 15)&&(e.getX()>mur.getDepart().getX())&&(e.getY()>mur.getArrivee().getY())&&(e.getY()<mur.getDepart().getY())){
                             switch (Bouton.revetement){
                                 case "Peinture" -> {
-                                    updateRevetement(mur.getRevetement().getIdRevetement(),"Peinture",mur.getSurface(mur)*3);
+                                    updateRevetement(mur.getRevetement().getIdRevetement(), "Peinture", mur.getSurface(mur)*3);
                                     }
                                 case "Carrelage" -> {
-                                    updateRevetement(mur.getRevetement().getIdRevetement(),"Carrelage",mur.getSurface(mur)*7);
+                                    updateRevetement(mur.getRevetement().getIdRevetement(), "Carrelage", mur.getSurface(mur)*7);
                                     }
                                 case "Parquet" -> {
-                                    updateRevetement(mur.getRevetement().getIdRevetement(),"Parquet",mur.getSurface(mur)*9);
+                                    updateRevetement(mur.getRevetement().getIdRevetement(), "Parquet", mur.getSurface(mur)*9);
                                     }
                                 case "Bardage" -> {
-                                    updateRevetement(mur.getRevetement().getIdRevetement(),"Bardage Bois",mur.getSurface(mur)*8);
+                                    updateRevetement(mur.getRevetement().getIdRevetement(), "Bardage Bois", mur.getSurface(mur)*8);
                                     }
                                 case "Lambris" -> {
-                                    updateRevetement(mur.getRevetement().getIdRevetement(),"Lambris",mur.getSurface(mur)*5);
+                                    updateRevetement(mur.getRevetement().getIdRevetement(), "Lambris", mur.getSurface(mur)*5);
                                     }
                                 case "Liège" -> {
-                                    updateRevetement(mur.getRevetement().getIdRevetement(),"Liege",mur.getSurface(mur)*4);
+                                    updateRevetement(mur.getRevetement().getIdRevetement(), "Liege", mur.getSurface(mur)*4);
                                     }
                             }
-                            updateMur(mur.getidMur(),mur.getRevetement()); 
+                            updateMur(mur.getidMur(), mur.getRevetement()); 
                         }
                     }
                     }
                 case "Mur Extérieur" -> {
                     for (int i = 1; i<5 ;i++){
                         Mur mur = etage.getMur().get(i);
-                        if ((mur.getDepart().getX()-mur.getArrivee().getX()!=0)&&(Math.abs(mur.getDepart().getY() - e.getY()) < 15)
-                                || (mur.getDepart().getY()-mur.getArrivee().getY()!=0)&&(Math.abs(mur.getDepart().getX() - e.getX()) < 15)){
+                        if ((mur.getDepart().getX()-mur.getArrivee().getX()!=0)  && (Math.abs(mur.getDepart().getY() - e.getY()) < 15)
+                                || (mur.getDepart().getY()-mur.getArrivee().getY()!=0) && (Math.abs(mur.getDepart().getX() - e.getX()) < 15)){
                             switch (Bouton.revetement){
                                 case "Crépis" -> {
                                     updateRevetement(mur.getRevetement().getIdRevetement(),"Crépis",mur.getSurface(mur)*5);
@@ -896,10 +907,10 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
         
         
         //Pose des ouvertures
-        if (Bouton.ouv==true){
+        if (Bouton.ouv == true){
             if ("Valider les ouvertures".equals(Bouton.ouverture)){
                 etage.setEtape(5);
-                Bouton.ouv=false;
+                Bouton.ouv = false;
                 redraw();
             }
             
@@ -918,36 +929,36 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                         largeurouv=0;
                     }
                 }
-            boolean paspossible= false;
+            boolean paspossible = false;
             for (Ouverture o : etage.getOuverture()){
-                if ((o.getXd()-o.getXf()==0)&&(y-largeurouv<o.getYf())&&(y+largeurouv>o.getYd())||
-                      (o.getYd()-o.getYf()==0)&&(x-largeurouv<o.getXf())&&(x+largeurouv>o.getXd())){
+                if ((o.getXd()-o.getXf()==0)&&(y-largeurouv<o.getYf())  &&  (y+largeurouv>o.getYd())
+                    || (o.getYd()-o.getYf()==0)&&(x-largeurouv<o.getXf())  &&  (x+largeurouv>o.getXd())){
                     aide.setText("Pas possible");
-                    paspossible=true;
+                    paspossible = true;
                 }
             }
             
             //verification si l'ouvertuer est à un endroit adequat
-            if(paspossible!=true){
-                boolean placer=false;
+            if(paspossible!= true){
+                boolean placer = false;
                 int i=0;
                 while (placer==false){
                     Mur mur = etage.getMur().get(i);
                     Ouverture ouverture ;
-                    if ((x>etage.getMur().get(4).getDepart().getX()+largeurouv)&&(x<etage.getMur().get(2).getArrivee().getX()-largeurouv)&&
-                         (y>etage.getMur().get(1).getDepart().getY()+largeurouv)&&(y<etage.getMur().get(3).getArrivee().getY()-largeurouv)){
+                    if ((x>etage.getMur().get(4).getDepart().getX()+largeurouv)  &&  (x<etage.getMur().get(2).getArrivee().getX()-largeurouv) &&
+                         (y>etage.getMur().get(1).getDepart().getY()+largeurouv)  &&  (y<etage.getMur().get(3).getArrivee().getY()-largeurouv)){
                         if (mur.getArrivee().getY()-mur.getDepart().getY()==00){
                             if(Math.abs(mur.getDepart().getY() - e.getY()) < 15){
                                 ouverture = new Ouverture(Ouverture.getLastIdouv(),x-largeurouv,mur.getDepart().getY()+2,x+largeurouv,mur.getDepart().getY()+2,Bouton.ouverture,etage.getIdetage());
                                 etage.getOuverture().add(ouverture);
-                                placer=true;
+                                placer = true;
                                 updateOuverture(ouverture.getidouv(),ouverture.getXd(),ouverture.getYd(),ouverture.getXf(),ouverture.getYf());
                             }
                         }else{
                             if(Math.abs(mur.getDepart().getX() - e.getX()) < 15){
                                 ouverture = new Ouverture(Ouverture.getLastIdouv(),mur.getDepart().getX()-2,y-largeurouv,mur.getDepart().getX()-2,y+largeurouv,Bouton.ouverture,etage.getIdetage());
                                 etage.getOuverture().add(ouverture);
-                                placer=true;
+                                placer = true;
                                 updateOuverture(ouverture.getidouv(),ouverture.getXd(),ouverture.getYd(),ouverture.getXf(),ouverture.getYf());
                             }
                         }
@@ -1004,7 +1015,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                 Droit = new Mur(Mur.getLastIdmur(),un,deuxiemecoin,etage.getIdetage(),new Revetement(Revetement.getLastIdrev()," ",1,0,0,0));
                 
             }else {
-                un = new Coin(Coin.getLastIdcoin(),deuxiemecoin.getX(),premierCoin.getY(),etage.getIdetage());
+                un = new Coin(Coin.getLastIdcoin(),deuxiemecoin.getX(),premierCoin.getY(),etage.getIdetage()); 
                 deux = new Coin(Coin.getLastIdcoin(),premierCoin.getX(),deuxiemecoin.getY(),etage.getIdetage());
                 Haut = new Mur(Mur.getLastIdmur(), deuxiemecoin, deux ,etage.getIdetage(),new Revetement(Revetement.getLastIdrev()," ",1,0,0,0));
                 Bas = new Mur(Mur.getLastIdmur(),premierCoin,un,etage.getIdetage(),new Revetement(Revetement.getLastIdrev()," ",1,0,0,0));
@@ -1014,11 +1025,11 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
             //ajout des objets aux listes de l'etage
             etage.getSol().add(newSol);
             etage.getPlafond().add(newPlafond);
-            Piece newPiece = new Piece(Piece.getLastIdpiece(),newSol,newPlafond,Haut,Droit,Bas,Gauche,etage.getIdetage(),Bouton.usage,0);
+            Piece newPiece = new Piece(Piece.getLastIdpiece(), newSol, newPlafond, Haut, Droit, Bas, Gauche, etage.getIdetage(),Bouton.usage, 0);
             etage.getRevetement().add(newSol.getRevetement());etage.getRevetement().add(newPlafond.getRevetement());
             etage.getRevetement().add(Haut.getRevetement());etage.getRevetement().add(Bas.getRevetement());etage.getRevetement().add(Gauche.getRevetement());etage.getRevetement().add(Droit.getRevetement());
             //si le deuxième coin est un coins deja créé, il n'est pas ajouté à la liste (il y est deja)
-            if (deja==false){
+            if (deja == false){
                 etage.getCoin().add(deuxiemecoin);
             }
             etage.getCoin().add(un);etage.getCoin().add(deux);              
@@ -1031,7 +1042,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
         //Calcul pour savoir si l'utilisateur à rempli l'étage de pièce
             if(Math.abs(Etage.getSurfacetot(etage)-(Mur.getLargeur(etage.getMur().get(1))*Devis.getechellelongeur())*(Mur.getLargeur(etage.getMur().get(2))*Devis.getechellelargeur()))<1){
                 etage.setEtape(2);
-                Bouton.appart=true;
+                Bouton.appart = true;
             }
     }
     
@@ -1082,7 +1093,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
     }
     
     public int getNbSurface(){
-        int nbsurf=-1+etage.getMur().size()+etage.getSol().size()+etage.getPlafond().size();
+        int nbsurf = -1+etage.getMur().size()+etage.getSol().size()+etage.getPlafond().size();
         return(nbsurf);
     }
     
