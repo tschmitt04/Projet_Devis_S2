@@ -392,7 +392,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
             case 5 -> {//Revêtements
                 getChildren().add(Bouton.boutons.get(1));
                 getChildren().add(Bouton.boutons.get(3));
-                aide2.setText("nombre de surface à revetir = "+getNbSurface()+"nombre de surface revetit = "+getRev());
+                aide2.setText("nombre de surface à revetir = "+getNbSurface()+"\nnombre de surface revetit = "+getRev());
                 getChildren().addAll(aide, aide2, devis, devisetage, idetage, Bouton.boutons.get(5), validation, rectangle1, text, text1);
                 getChildren().add(imageView);//Légende des revêtement
             }
@@ -402,7 +402,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
             
             
             case 6 -> {//Possibilité d'incrémenter l'étage
-                if (etage.getIdetage()==Devis.getnbetage()-1){
+                if (etage.getIdetage() == Devis.getnbetage()-1){
                     getChildren().add(validation);
                 }
                 getChildren().add(Bouton.boutons.get(4));
@@ -1093,7 +1093,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                 etage.getCoin().remove(deuxiemecoin);
             }
         //Calcul pour savoir si l'utilisateur à rempli l'étage de pièce
-            if(Math.abs(Etage.getSurfacetot(etage)-(Mur.getLargeur(etage.getMur().get(1))*Devis.getechellelongeur())*(Mur.getLargeur(etage.getMur().get(2))*Devis.getechellelargeur()))<1){
+            if(Math.abs(Etage.getSurfacetot(etage)-(Mur.getLargeur(etage.getMur().get(1))*Devis.getechellelongeur())*(Mur.getLargeur(etage.getMur().get(2))*Devis.getechellelargeur()))<4){
                 etage.setEtape(2);
                 Bouton.appart = true;
             }
@@ -1146,7 +1146,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
     }
     
     public int getNbSurface(){
-        int nbsurf = -1+etage.getMur().size()+etage.getSol().size()+etage.getPlafond().size();
+        int nbsurf = -1+etage.getMur().size()+etage.getSol().size()+etage.getPlafond().size()-4;
         return(nbsurf);
     }
     
@@ -1239,7 +1239,7 @@ public class TimelineExample {
 /* Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1),event->{aide4.setText(" ");}));
                 timeline.setCycleCount(1);
                 timeline.play();
-                getChildren().addAll(aide4);
+                getChildren().addAll(aide4); 
 */
 
 
