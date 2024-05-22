@@ -451,7 +451,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
         
         
         //Dessiner les murs extérieur (terrain) et définition de la couleur en fonction de son revetement///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        for (int i = 0; i<9;i++) {
+        for (int i = 0; i<5;i++) {
             Mur cote = etage.getMur().get(i);
             Line lineMur = new Line (cote.getDepart().getX(),cote.getDepart().getY(),cote.getArrivee().getX(),cote.getArrivee().getY());
                 switch (cote.getRevetement().getTypeRevetement()){
