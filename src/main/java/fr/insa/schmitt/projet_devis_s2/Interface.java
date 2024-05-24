@@ -263,11 +263,13 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                         Interface.aide.setText("Toutes les pièces n'ont pas\n été affectées à un appartement");
                     }
                 }
+                
                 case 6 -> {
                     etage.setEtape(7);
                 }
+                
                 default -> {
-                    if (getNbSurface()==getRev()){
+                    if ((getNbSurface())==getRev()){
                         Bouton.rev=false;
                         etage.setEtape(6);
                     }
@@ -378,7 +380,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
             
             
             case 4 -> {//Ouvertures
-                for (int i =1 ; i< 3;i++) {
+                for (int i =1 ; i< 3; i++) {
                     Button button=Bouton.boutons.get(i);
                     getChildren().add(button);
                 }
@@ -394,7 +396,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                 getChildren().add(Bouton.boutons.get(3));
                 aide2.setText("nombre de surface à revetir = "+getNbSurface()+"\nnombre de surface revetit = "+getRev());
                 getChildren().addAll(aide, aide2, devis, devisetage, idetage, Bouton.boutons.get(5), validation, rectangle1, text, text1);
-                getChildren().add(imageView);//Légende des revêtement
+                getChildren().add(imageView);
             }
             
             
@@ -1146,7 +1148,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
     }
     
     public int getNbSurface(){
-        int nbsurf = -1+etage.getMur().size()+etage.getSol().size()+etage.getPlafond().size()-4;
+        int nbsurf = -1+etage.getMur().size()+etage.getSol().size()+etage.getPlafond().size();
         return(nbsurf);
     }
     

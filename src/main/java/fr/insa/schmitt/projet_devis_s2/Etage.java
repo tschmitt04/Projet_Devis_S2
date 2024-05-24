@@ -4,12 +4,7 @@
  */
 package fr.insa.schmitt.projet_devis_s2;
 
-/**
- *
- * @author Elève
- */
-import static fr.insa.schmitt.projet_devis_s2.Devis.hauteur;
-import static fr.insa.schmitt.projet_devis_s2.Devis.largeur;
+
 import java.util.ArrayList;
 //creation de la class etage avec association de differente liste pour definir la composition de l'etage
 public class Etage {
