@@ -264,20 +264,25 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                     }
                 }
                 
-                case 6 -> {
+                /*case 6 -> {
                     etage.setEtape(7);
-                }
+                }*/
                 
                 default -> {
                     if ((getNbSurface())==getRev()){
                         Bouton.rev=false;
                         etage.setEtape(6);
+                    
                     }
                 }
             }
         });
         
-        
+        Button FIN = Bouton.creationbouton("FIN", largeur*1/4-25, hauteur - 200, () -> {
+            if ((getNbSurface())==getRev()){
+                etage.setEtape(7);
+            }
+        });
         
         
         
@@ -292,6 +297,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
         for (int i =1; i<nbappart+1;i++){
             boutonAppart.getItems().add(String.valueOf(i));
         }
+        
         ChangeListener<String> choixAppartListener = (observable, oldValue, newValue) -> {
             String choixAppartStr = boutonAppart.getValue(); 
             choixAppart = Integer.parseInt(choixAppartStr);
@@ -313,6 +319,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
         switch (etage.getetape()) {
             
             case 0 -> {
+                
                 text.setText("Veuillez créer la cage d'escalier");
                 aide.setText("Veuillez créer la cage d'escalier");  
                 getChildren().addAll(aide, devis, devisetage, rectangle1, text, text1); //Création de l'escalier uniquement pour le rdc
@@ -408,7 +415,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                     getChildren().add(validation);
                 }
                 getChildren().add(Bouton.boutons.get(4));
-                getChildren().addAll(aide, aide2, devis, devisetage, idetage, rectangle1, text, text1);
+                getChildren().addAll(FIN, aide, aide2, devis, devisetage, idetage, rectangle1, text, text1);
                 getChildren().add(imageView);
             }
             
@@ -416,7 +423,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
             
             
             
-            case 7 -> {// Si le bâtiment est finit (tous les étages on été revêtit et que l'utilisateur valide
+            case 7 -> {// Si le bâtiment est fini (tous les étages on été revêtit et que l'utilisateur valide
                 Alert alert = new Alert(Alert.AlertType.NONE);
                 alert.setTitle("Validation du bâtiment");
                 alert.setHeaderText(null);
@@ -428,6 +435,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                     alert.setTitle("Devis final");
                     alert.setHeaderText(null);
                     alert.setContentText("Le devis de votre bâtiment est de : "+getPrix()+" euros");
+ 
                     ButtonType ok = new ButtonType("Ok");
                     alert.getButtonTypes().setAll(ok);
                     Optional<ButtonType> finir = alert.showAndWait();
@@ -457,7 +465,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
             Mur cote = etage.getMur().get(i);
             Line lineMur = new Line (cote.getDepart().getX(),cote.getDepart().getY(),cote.getArrivee().getX(),cote.getArrivee().getY());
                 switch (cote.getRevetement().getTypeRevetement()){
-                    case "Paquettes de parement" -> lineMur.setStroke(Color.BROWN);
+                    case "Plaquette de parement" -> lineMur.setStroke(Color.ALICEBLUE);
                     case "Crépi" -> lineMur.setStroke(Color.ALICEBLUE);
                     case "Lambris 1" -> lineMur.setStroke(Color.DARKGOLDENROD);
                     case "Lambris 2" -> lineMur.setStroke(Color.DARKGOLDENROD);
@@ -885,7 +893,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                                 case "Peinture 3" -> {
                                     updateRevetement(mur.getRevetement().getIdRevetement(),"Peinture 3",mur.getSurface(mur)*29.90);
                                     }
-                                case "Plaquettes de parement" -> {
+                                case "Plaquette de parement" -> {
                                     updateRevetement(mur.getRevetement().getIdRevetement(),"Plaquettes de parement",mur.getSurface(mur)*15.20);
                                     }
                             }
