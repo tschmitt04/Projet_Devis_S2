@@ -238,7 +238,7 @@ public class Devis extends Application {
 
         }else{
             int dernieretage = Etage.getEtage().size()-2;
-            //Récupération de tous les objets devannt figurer sur les étages suivant tel que la cage d'escalier (première pièce de la liste de pièce de l'étage précédant)
+            //Récupération de tous les objets devant figurer sur les étages suivant tel que la cage d'escalier (première pièce de la liste de pièce de l'étage précédant)
             Piece avant =  Etage.getEtage().get(dernieretage).getPiece().get(0);
             Plafond pla =Etage.getEtage().get(dernieretage).getPiece().get(0).getPlafond();
             Sol sol =Etage.getEtage().get(dernieretage).getPiece().get(0).getSol();
