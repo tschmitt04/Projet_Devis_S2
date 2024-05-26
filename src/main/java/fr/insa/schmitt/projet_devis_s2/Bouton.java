@@ -138,8 +138,9 @@ public class Bouton {
                         "Moquette",
                         "Vinyle Lino",
                         "Stratifie",
-                        "Liège",
+                        "Liège 2",
                         "Lambris 1",
+                        "Lambris 2",
                         "Gazon");
                 rev = true;
             }
@@ -157,7 +158,7 @@ public class Bouton {
                         "Plaquettes de parement",
                         "Lambris 1",
                         "Lambris 2",
-                        "Liège",
+                        "Liège 1",
                         "Crépi",
                         "Papier Peint");
                 rev=true;
@@ -165,8 +166,9 @@ public class Bouton {
             case "Mur Extérieur" -> {
                 revetement = Choix ("Choisir le revêtement du mur extérieur",
                         "Choisir le revêtement du mur extérieur :",
-                        "Lambris 1",
-                        "Lambris 2",
+                        "Peinture 1",
+                        "Peinture 2",
+                        "Peinture 3",
                         "Plaquettes de parement",
                         "Crépi");
                 rev = true;
