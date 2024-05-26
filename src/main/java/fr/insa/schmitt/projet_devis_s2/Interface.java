@@ -861,8 +861,8 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                                 case "Lambris 2" -> {
                                     updateRevetement(mur.getRevetement().getIdRevetement(),"Lambris 2",mur.getSurface(mur)*42.50);
                                     }
-                                case "Liège" -> {
-                                    updateRevetement(mur.getRevetement().getIdRevetement(),"Liege",mur.getSurface(mur)*33.90);
+                                case "Liège 1" -> {
+                                    updateRevetement(mur.getRevetement().getIdRevetement(),"Liege 1",mur.getSurface(mur)*25.40);
                                     }
                                 case "Marbre" -> {
                                     updateRevetement(mur.getRevetement().getIdRevetement(),"Marbre",mur.getSurface(mur)*33.90);
@@ -909,10 +909,10 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                                 case "Carrelage 1" -> {
                                     updateRevetement(sol.getSol().getRevetement().getIdRevetement(),"Carrelage 1",sol.getSurface(sol.getMurHaut(),sol.getMurGauche())*49.75);
                                     }
-                                 case "Carrelage 2" -> {
+                                case "Carrelage 2" -> {
                                     updateRevetement(sol.getSol().getRevetement().getIdRevetement(),"Carrelage 2",sol.getSurface(sol.getMurHaut(),sol.getMurGauche())*89.45);
                                     }
-                                  case "Carrelage 3" -> {
+                                case "Carrelage 3" -> {
                                     updateRevetement(sol.getSol().getRevetement().getIdRevetement(),"Carrelage 3",sol.getSurface(sol.getMurHaut(),sol.getMurGauche())*10.35);
                                     }
                                 case "Parquet" -> {
@@ -933,6 +933,15 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                                 case "Lambris 1" -> {
                                     updateRevetement(sol.getSol().getRevetement().getIdRevetement(),"Lambris 1",sol.getSurface(sol.getMurHaut(),sol.getMurGauche())*50.60);
                                 }
+                                case "Lambris 2" -> {
+                                    updateRevetement(sol.getSol().getRevetement().getIdRevetement(),"Lambris 2",sol.getSurface(sol.getMurHaut(),sol.getMurGauche())*42.50);
+                                }
+                                case "Liège 2" -> {
+                                    updateRevetement(sol.getSol().getRevetement().getIdRevetement(),"Liège 2",sol.getSurface(sol.getMurHaut(),sol.getMurGauche())*33.90);
+                                }
+                                case "Marbre" -> {
+                                    updateRevetement(sol.getSol().getRevetement().getIdRevetement(),"Marbre",sol.getSurface(sol.getMurHaut(),sol.getMurGauche())*97.85);
+                                    }
                             }
                             updateSol(sol.getSol().getidsol(),sol.getSol().getRevetement());
                         }
