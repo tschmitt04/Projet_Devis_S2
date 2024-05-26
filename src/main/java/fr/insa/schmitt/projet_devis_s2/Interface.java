@@ -465,7 +465,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
             Mur cote = etage.getMur().get(i);
             Line lineMur = new Line (cote.getDepart().getX(),cote.getDepart().getY(),cote.getArrivee().getX(),cote.getArrivee().getY());
                 switch (cote.getRevetement().getTypeRevetement()){
-                    case "Plaquette de parement" -> lineMur.setStroke(Color.ALICEBLUE);
+                    case "Plaquettes de parement" -> lineMur.setStroke(Color.ALICEBLUE);
                     case "Crépi" -> lineMur.setStroke(Color.ALICEBLUE);
                     case "Lambris 1" -> lineMur.setStroke(Color.DARKGOLDENROD);
                     case "Lambris 2" -> lineMur.setStroke(Color.DARKGOLDENROD);
@@ -543,7 +543,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                     case "Peinture 1" -> lineMur.setStroke(Color.BISQUE);
                     case "Peinture 2" -> lineMur.setStroke(Color.AQUA);
                     case "Peinture 3" -> lineMur.setStroke(Color.AQUAMARINE);
-                    case "Paquettes de parement" -> lineMur.setStroke(Color.BROWN);
+                    case "Plaquettes de parement" -> lineMur.setStroke(Color.BROWN);
                     case "Crépi" -> lineMur.setStroke(Color.ALICEBLUE);
                     case "Marbre" -> lineMur.setStroke(Color.DARKGREY);
                     case "Papier Peint" -> lineMur.setStroke(Color.CRIMSON);
@@ -893,7 +893,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                                 case "Peinture 3" -> {
                                     updateRevetement(mur.getRevetement().getIdRevetement(),"Peinture 3",mur.getSurface(mur)*29.90);
                                     }
-                                case "Plaquette de parement" -> {
+                                case "Plaquettes de parement" -> {
                                     updateRevetement(mur.getRevetement().getIdRevetement(),"Plaquettes de parement",mur.getSurface(mur)*15.20);
                                     }
                             }
