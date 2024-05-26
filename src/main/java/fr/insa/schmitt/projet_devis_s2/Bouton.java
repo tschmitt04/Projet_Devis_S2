@@ -139,7 +139,8 @@ public class Bouton {
                         "Vinyle Lino",
                         "Stratifie",
                         "Liège",
-                        "Lambris 1");
+                        "Lambris 1",
+                        "Gazon");
                 rev = true;
             }
 
@@ -166,7 +167,7 @@ public class Bouton {
                         "Choisir le revêtement du mur extérieur :",
                         "Lambris 1",
                         "Lambris 2",
-                        "Plaquette de parement",
+                        "Plaquettes de parement",
                         "Crépi");
                 rev = true;
             }
