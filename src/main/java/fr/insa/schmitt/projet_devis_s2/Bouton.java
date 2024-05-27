@@ -22,7 +22,7 @@ public class Bouton {
     public static ArrayList<Button> creationboutons(double largeur, double hauteur) {
         
        /*Création du bouton pièce, au clic deroulement d'autre boutton lié a la nature de la piece,
-        puis définition du texte d'aide pour selectionner un coin afin de former la pièce */
+        puis définition du texte message pour selectionner un coin afin de former la pièce */
        
         Button nouvellepièce = creationbouton("Pièce", 20, 65, () -> {
             usage = Choix("Choisir l'usage de la pièce",
@@ -36,7 +36,7 @@ public class Bouton {
                     "Bureau");
             piece = true;
             Interface.premierCoin = null;
-            Interface.aide.setText("Veuillez sélectionner un coin");
+            Interface.message.setText("Veuillez sélectionner un coin");
         });
         boutons.add(nouvellepièce);
         nouvellepièce.setPrefWidth(largeur/10);

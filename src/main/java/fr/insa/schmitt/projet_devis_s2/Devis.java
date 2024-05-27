@@ -299,7 +299,7 @@ public class Devis extends Application {
                 primaryStage.setScene(scenes.get(etageActuel));
             }
         } else {
-            Interface.aide.setText("Nombre d'étage dépassé");
+            Interface.message.setText("Nombre d'étage dépassé");
         }
     }
     //pouvoir se rendre à un etage precedent avec message d'alerte si on est déjà au rdc
@@ -308,7 +308,7 @@ public class Devis extends Application {
         if (etageActuel> 0) {
             etageActuel--;
         } else {
-            Interface.aide.setText("Vous êtes déjà au rdc");
+            Interface.message.setText("Vous êtes déjà au rdc");
         }
         primaryStage.setScene(scenes.get(etageActuel));
     }

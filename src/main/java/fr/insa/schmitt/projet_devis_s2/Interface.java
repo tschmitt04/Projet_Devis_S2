@@ -1,7 +1,7 @@
 package fr.insa.schmitt.projet_devis_s2;
 
-import static fr.insa.schmitt.projet_devis_s2.Interface.aide;
-import static fr.insa.schmitt.projet_devis_s2.Interface.aide4;
+import static fr.insa.schmitt.projet_devis_s2.Interface.message;
+import static fr.insa.schmitt.projet_devis_s2.Interface.message4;
 import java.text.DecimalFormat;
 import java.util.Optional;
 import javafx.beans.value.ChangeListener;
@@ -43,12 +43,12 @@ import javafx.scene.text.Text;
 
 public final class Interface extends Pane implements EventHandler<MouseEvent> {
     
-    public static Label aide;
-    public static Label aide2;
-    public static Label aide3;
-    public static Label aide4;
+    public static Label message;
+    public static Label message2;
+    public static Label message3;
+    public static Label message4;
     public static Text text;
-    public static Text text1;
+    public static Text message5;
     private final Label devis;
     private final Label devisetage;
     public static Image imagegrue;
@@ -71,14 +71,14 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
         this.largeur=largeur;
         this.hauteur=hauteur;
         Bouton.creationboutons(largeur, hauteur);
-        aide=new Label();
-        aide2=new Label();
-        aide3=new Label();
-        aide4=new Label();
+        message=new Label();
+        message2=new Label();
+        message3=new Label();
+        message4=new Label();
         devis=new Label();
         devisetage=new Label();
         text = new Text();
-        text1 = new Text("--SCMITT--SQUILLARIO--THOMAS--B7--");
+        message5 = new Text("--SCMITT--SQUILLARIO--THOMAS--B7--");
         setOnMouseClicked(this);
         redraw();
         interfaces.add(this);
@@ -187,22 +187,22 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
         imageView.setFitHeight(largeur*1/3);
        
         
-        aide.setLayoutX(20);
-        aide.setLayoutY(150);
-        aide.setFont(new Font ("Papyrus", 17));
+        message.setLayoutX(20);
+        message.setLayoutY(150);
+        message.setFont(new Font ("Papyrus", 17));
         
-        aide2.setLayoutX(20);
-        aide2.setLayoutY(hauteur*1/3+30);
-        aide2.setFont(new Font ("Papyrus", 14));
+        message2.setLayoutX(20);
+        message2.setLayoutY(hauteur*1/3+30);
+        message2.setFont(new Font ("Papyrus", 14));
         
-        aide3.setLayoutX(largeur/3);    //POUR L'INSTANT INUTILE
-        aide3.setLayoutY(hauteur/3);
-        aide3.setFont(new Font ("Papyrus", 100));
+        message3.setLayoutX(largeur/3);    //POUR L'INSTANT INUTILE
+        message3.setLayoutY(hauteur/3);
+        message3.setFont(new Font ("Papyrus", 100));
         
-        aide4.setLayoutX(20);      // POUR LE MESSAGE D'ALERTE ERREUR
-        aide4.setLayoutY(hauteur*1/3+50);
-        aide4.setFont(new Font ("Papyrus", 15));
-        aide4.setText("SQUILLARIO-THOMAS-SCMITT");
+        message4.setLayoutX(20);      // POUR LE MESSAGE D'ALERTE ERREUR
+        message4.setLayoutY(hauteur*1/3+50);
+        message4.setFont(new Font ("Papyrus", 15));
+        message4.setText("SQUILLARIO-THOMAS-SCMITT");
         
         devis.setLayoutX(largeur*1/4);
         devis.setLayoutY(10);
@@ -238,10 +238,10 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
         text.setFill(Color.BLACK); // Couleur du texte
         text.setFont(Font.font("Papyrus", FontWeight.BOLD, 17));
         
-        text1.setX(20); // Position X du texte
-        text1.setY(hauteur-40); // Position Y du texte
-        text1.setFill(Color.BLACK); // Couleur du texte
-        text1.setFont(Font.font("Papyrus", FontWeight.BOLD, 10));
+        message5.setX(20); // Position X du texte
+        message5.setY(hauteur-40); // Position Y du texte
+        message5.setFill(Color.BLACK); // Couleur du texte
+        message5.setFont(Font.font("Papyrus", FontWeight.BOLD, 10));
         
         
         
@@ -252,7 +252,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                         Bouton.appart=false;
                         etage.setEtape(4);
                     }else{
-                        Interface.aide.setText("Toutes les pièces n'ont pas\n été affectées à un appartement");
+                        Interface.message.setText("Toutes les pièces n'ont pas\n été affectées à un appartement");
                     }
                 }
                 
@@ -284,7 +284,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
         ComboBox<String> boutonAppart = new ComboBox<>();
         boutonAppart.setLayoutX(20);
         boutonAppart.setLayoutY(70);
-        boutonAppart.setPromptText("Sélectionnez le numéro de l'appartement");
+        boutonAppart.setPromptText("Sélectionnez le n° de l'appartement");
         
         for (int i =1; i<nbappart+1;i++){
             boutonAppart.getItems().add(String.valueOf(i));
@@ -313,8 +313,8 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
             case 0 -> {
                 
                 text.setText("Veuillez créer la cage d'escalier");
-                aide.setText("Veuillez créer la cage d'escalier");  
-                getChildren().addAll(aide, devis, devisetage, rectangle1, text, text1); //Création de l'escalier uniquement pour le rdc
+                message.setText("Veuillez créer la cage d'escalier");  
+                getChildren().addAll(message, devis, devisetage, rectangle1, text, message5); //Création de l'escalier uniquement pour le rdc
             }
             
             
@@ -326,8 +326,8 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                     Button button=Bouton.boutons.get(i);
                     getChildren().add(button);
                 }
-                aide2.setText("Surface totale : "+Math.round(Etage.getSurfacetot(etage))+" m²\n(arrondie de :"+Etage.getSurfacetot(etage)+" m²)\n \nSurface terrain : "+Math.round((Mur.getLargeur(etage.getMur().get(1))*Devis.getechellelongeur())*(Mur.getLargeur(etage.getMur().get(2))*Devis.getechellelargeur()))+" m²\n(arrondie de :"+(Mur.getLargeur(etage.getMur().get(1))*Devis.getechellelongeur())*(Mur.getLargeur(etage.getMur().get(2))*Devis.getechellelargeur())+" m²)");
-                getChildren().addAll(aide, aide2, devis, devisetage, idetage, Bouton.boutons.get(5), rectangle1, text, text1);
+                message2.setText("Surface totale : "+Math.round(Etage.getSurfacetot(etage))+" m²\n(arrondie de :"+Etage.getSurfacetot(etage)+" m²)\n \nSurface terrain : "+Math.round((Mur.getLargeur(etage.getMur().get(1))*Devis.getechellelongeur())*(Mur.getLargeur(etage.getMur().get(2))*Devis.getechellelargeur()))+" m²\n(arrondie de :"+(Mur.getLargeur(etage.getMur().get(1))*Devis.getechellelongeur())*(Mur.getLargeur(etage.getMur().get(2))*Devis.getechellelargeur())+" m²)");
+                getChildren().addAll(message, message2, devis, devisetage, idetage, Bouton.boutons.get(5), rectangle1, text, message5);
             }
             
             
@@ -354,11 +354,11 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                             }
                         } catch (NumberFormatException e) {
                             System.out.println("Veuillez saisir un nombre entier");
-                            aide4.setText("ERREUR");
-                            /*Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(4),event->{aide4.setText("77 ");}));
+                            message4.setText("ERREUR");
+                            /*Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(4),event->{message4.setText("77 ");}));
                             timeline.setCycleCount(1);
                             timeline.play();
-                            getChildren().addAll(aide4);*/
+                            getChildren().addAll(message4);*/
                         }
                     }
                 }
@@ -369,9 +369,9 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
             
             
             case 3 -> {//menu déroulant des appartements
-                getChildren().addAll(boutonAppart, aide,validation,idetage,Bouton.boutons.get(5),rectangle1, text, text1);
+                getChildren().addAll(boutonAppart, message,validation,idetage,Bouton.boutons.get(5),rectangle1, text, message5);
                 text.setText("Cliquez sur le bouton Valider pour\npasser à l'étape suivante");
-                aide.setText("Cliquez sur le bouton Valider pour\npasser à l'étape suivante");
+                message.setText("Cliquez sur le bouton Valider pour\npasser à l'étape suivante");
             }
             
             
@@ -383,7 +383,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                     Button button=Bouton.boutons.get(i);
                     getChildren().add(button);
                 }
-                getChildren().addAll(aide, devis, devisetage, idetage, Bouton.boutons.get(5), rectangle1, text, text1);
+                getChildren().addAll(message, devis, devisetage, idetage, Bouton.boutons.get(5), rectangle1, text, message5);
             }
             
             
@@ -393,8 +393,8 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
             case 5 -> {//Revêtements
                 getChildren().add(Bouton.boutons.get(1));
                 getChildren().add(Bouton.boutons.get(3));
-                aide2.setText("nombre de surface à revetir = "+getNbSurface()+"\nnombre de surface revetit = "+getRev());
-                getChildren().addAll(aide, aide2, devis, devisetage, idetage, Bouton.boutons.get(5), validation, rectangle1, text, text1);
+                message2.setText("nombre de surface à revetir = "+getNbSurface()+"\nnombre de surface revetit = "+getRev());
+                getChildren().addAll(message, message2, devis, devisetage, idetage, Bouton.boutons.get(5), validation, rectangle1, text, message5);
                 getChildren().add(imageView);
             }
             
@@ -407,7 +407,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                     getChildren().add(validation);
                 }
                 getChildren().add(Bouton.boutons.get(4));
-                getChildren().addAll(FIN, aide, aide2, devis, devisetage, idetage, rectangle1, text, text1);
+                getChildren().addAll(FIN, message, message2, devis, devisetage, idetage, rectangle1, text, message5);
                 getChildren().add(imageView);
             }
             
@@ -611,7 +611,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                                 premierCoin = cote;
                                 selectedCoin = cote;
                                 text.setText("Veuillez maintenant placer un coin");
-                                aide.setText("Veuillez maintenant placer un coin");
+                                message.setText("Veuillez maintenant placer un coin");
                                 redraw();
                                 break;
                         }
@@ -621,9 +621,9 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                 if (Math.abs(coin.getX()-e.getX())<20  &&  Math.abs(coin.getY()-e.getY())<20) {
                     if (coin==selectedCoin){
                         text.setText("Vous avez déjà sélectionner ce coin");
-                        aide.setText("Vous avez déjà sélectionner ce coin");
-                        /*aide4.setText("ERREUR");
-                            Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(4),event->{aide4.setText(" ");}));
+                        message.setText("Vous avez déjà sélectionner ce coin");
+                        /*message4.setText("ERREUR");
+                            Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(4),event->{message4.setText(" ");}));
                             timeline.setCycleCount(1);
                             timeline.play();*/
                            
@@ -654,11 +654,11 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                     if (Math.abs(cote.getX()-e.getX())<20  &&  Math.abs(cote.getY()-e.getY())<20) {
                         premierCoin = cote;
                         selectedCoin = cote;         
-                        aide.setText("Veuillez maintenant placer un coin\n sur un mur existant, ou sur un autre\n coin");
+                        message.setText("Veuillez maintenant placer un coin\n sur un mur existant, ou sur un autre\n coin");
                         text.setText("Veuillez maintenant placer un coin\n sur un mur existant, ou sur un autre\n coin");
                         redraw();
-                        /*aide4.setText("ERREUR");
-                            Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(4),event->{aide4.setText("ERREUR");}));
+                        /*message4.setText("ERREUR");
+                            Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(4),event->{message4.setText("ERREUR");}));
                             timeline.setCycleCount(1);
                             timeline.play();*/
                     }
@@ -668,7 +668,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                 for (Coin coin : etage.getCoin()) {
                     if (Math.abs(coin.getX()-e.getX())<20  &&  Math.abs(coin.getY()-e.getY())<20) {
                         if (coin == selectedCoin) {
-                            aide.setText("Vous avez déjà sélectionné ce coin là");
+                            message.setText("Vous avez déjà sélectionné ce coin là");
                             text.setText("Vous avez déjà sélectionné ce coin là");
                             Alert alert1 = new Alert(Alert.AlertType.NONE);
                             alert1.setTitle("ERREUR...");
@@ -680,7 +680,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                                 if (finir.get() == ok) {
                                     alert1.close();
                                 }
-                            /*aide2.setText("ERREUR");*/
+                            /*message2.setText("ERREUR");*/
                             /*Text text = new Text("erreur");
                             FadeTransition fadeTransition = new FadeTransition(Duration.seconds(1),text);
                             fadeTransition.setFromValue(1.0);
@@ -776,7 +776,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                             Bouton.piece=false;
                             redraw();
                         }else{
-                            aide.setText("Le coin ne peut pas être placé à\n l'intérieur d'une pièce existante.");
+                            message.setText("Le coin ne peut pas être placé à\n l'intérieur d'une pièce existante.");
                             Alert alert1 = new Alert(Alert.AlertType.NONE);
                             alert1.setTitle("ERREUR...");
                             alert1.setHeaderText(null);
@@ -997,7 +997,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
             for (Ouverture o : etage.getOuverture()){
                 if ((o.getXd()-o.getXf()==0)&&(y-largeurouv<o.getYf())  &&  (y+largeurouv>o.getYd())
                     || (o.getYd()-o.getYf()==0)&&(x-largeurouv<o.getXf())  &&  (x+largeurouv>o.getXd())){
-                    aide.setText("Pas possible");
+                    message.setText("Pas possible");
                     paspossible = true;
                 }
             }
@@ -1247,10 +1247,10 @@ public class TimelineExample {
 }*/
 }
 
-/* Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1),event->{aide4.setText(" ");}));
+/* Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1),event->{message4.setText(" ");}));
                 timeline.setCycleCount(1);
                 timeline.play();
-                getChildren().addAll(aide4); 
+                getChildren().addAll(message4); 
 */
 
 
