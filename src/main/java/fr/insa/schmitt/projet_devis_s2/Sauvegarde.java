@@ -41,35 +41,35 @@ public class Sauvegarde {
                 fin = 0;
                 c = txtbat.charAt(debut);
                 //permet de recuperer les "substring" de chaque attributs
-                while (c != '/') {
+                while (c != ';') {
                     fin = fin + 1;
                     c = txtbat.charAt(fin);
                 }
                 idbat = txtbat.substring(debut,fin);
                 debut = fin + 1;
                 c = txtbat.charAt(debut);
-                while (c != '/') {
+                while (c != ';') {
                     fin = fin + 1;
                     c = txtbat.charAt(fin);
                 }
                 typbat = txtbat.substring(debut,fin);
                 debut = fin + 1;
                 c = txtbat.charAt(debut);
-                while (c != '/') {
+                while (c != ';') {
                     fin = fin + 1;
                     c = txtbat.charAt(fin);
                 }
                 nbretg = txtbat.substring(debut,fin);
                 debut = fin + 1;
                 c = txtbat.charAt(debut);
-                while (c != '/') {
+                while (c != ';') {
                     fin = fin + 1;
                     c = txtbat.charAt(fin);
                 }
                 larg = txtbat.substring(debut,fin);
                 debut = fin + 1;
                 c = txtbat.charAt(debut);
-                while (c != '/') {
+                while (c != ';') {
                     fin = fin + 1;
                     c = txtbat.charAt(fin);
                 }
@@ -90,28 +90,28 @@ public class Sauvegarde {
                     fin = 0;
                     while (txtcoins.charAt(debut) != '@') {
                         c = txtcoins.charAt(debut);
-                        while (c != '/') {
+                        while (c != ';') {
                             fin = fin + 1;
                             c = txtcoins.charAt(fin);
                         }
                         idcoin = txtcoins.substring(debut,fin);
                         debut = fin + 1;
                         c = txtcoins.charAt(debut);
-                        while (c != '/') {
+                        while (c != ';') {
                             fin = fin + 1;
                             c = txtcoins.charAt(fin);
                         }
                         xcoin = txtcoins.substring(debut,fin);
                         debut = fin + 1;
                         c = txtcoins.charAt(debut);
-                        while (c != '/') {
+                        while (c != ';') {
                             fin = fin + 1;
                             c = txtcoins.charAt(fin);
                         }
                         ycoin = txtcoins.substring(debut,fin);
                         debut = fin + 1;
                         c = txtcoins.charAt(debut);
-                        while (c != '/') {
+                        while (c != ';') {
                             fin = fin + 1;
                             c = txtcoins.charAt(fin);
                         }
@@ -125,42 +125,42 @@ public class Sauvegarde {
                     fin = 0;
                     while (txtrevetements.charAt(debut) != '@') {
                         c = txtrevetements.charAt(debut);
-                        while (c != '/') {
+                        while (c != ';') {
                             fin = fin + 1;
                             c = txtrevetements.charAt(fin);
                         }
                         idrevetement = txtrevetements.substring(debut,fin);
                         debut = fin + 1;
                         c = txtrevetements.charAt(debut);
-                        while (c != '/') {
+                        while (c != ';') {
                             fin = fin + 1;
                             c = txtrevetements.charAt(fin);
                         }
                         typerevetement = txtrevetements.substring(debut,fin);
                         debut = fin + 1;
                         c = txtrevetements.charAt(debut);
-                        while (c != '/') {
+                        while (c != ';') {
                             fin = fin + 1;
                             c = txtrevetements.charAt(fin);
                         }
                         idmur = txtrevetements.substring(debut,fin);
                         debut = fin + 1;
                         c = txtrevetements.charAt(debut);
-                        while (c != '/') {
+                        while (c != ';') {
                             fin = fin + 1;
                             c = txtrevetements.charAt(fin);
                         }
                         idsol = txtrevetements.substring(debut,fin);
                         debut = fin + 1;
                         c = txtrevetements.charAt(debut);
-                        while (c != '/') {
+                        while (c != ';') {
                             fin = fin + 1;
                             c = txtrevetements.charAt(fin);
                         }
                         idplafond = txtrevetements.substring(debut,fin);
                         debut = fin + 1;
                         c = txtrevetements.charAt(debut);
-                        while (c != '/') {
+                        while (c != ';') {
                             fin = fin + 1;
                             c = txtrevetements.charAt(fin);
                         }
@@ -174,35 +174,35 @@ public class Sauvegarde {
                     fin = 0;
                     while (txtmurs.charAt(debut) != '@') {
                         c = txtmurs.charAt(debut);
-                        while (c != '/') {
+                        while (c != ';') {
                             fin = fin + 1;
                             c = txtmurs.charAt(fin);
                         }
                         idmur = txtmurs.substring(debut,fin);
                         debut = fin + 1;
                         c = txtmurs.charAt(debut);
-                        while (c != '/') {
+                        while (c != ';') {
                             fin = fin + 1;
                             c = txtmurs.charAt(fin);
                         }
                         coindepart = txtmurs.substring(debut,fin);
                         debut = fin + 1;
                         c = txtmurs.charAt(debut);
-                        while (c != '/') {
+                        while (c != ';') {
                             fin = fin + 1;
                             c = txtmurs.charAt(fin);
                         }
                         coinarrivee = txtmurs.substring(debut,fin);
                         debut = fin + 1;
                         c = txtmurs.charAt(debut);
-                        while (c != '/') {
+                        while (c != ';') {
                             fin = fin + 1;
                             c = txtmurs.charAt(fin);
                         }
                         etage = txtmurs.substring(debut,fin);
                         debut = fin + 1;
                         c = txtmurs.charAt(debut);
-                        while (c != '/') {
+                        while (c != ';') {
                             fin = fin + 1;
                             c = txtmurs.charAt(fin);
                         }
@@ -216,14 +216,14 @@ public class Sauvegarde {
                     fin = 0;
                     while (txtsols.charAt(debut) != '@') {
                         c = txtsols.charAt(debut);
-                        while (c != '/') {
+                        while (c != ';') {
                             fin = fin + 1;
                             c = txtsols.charAt(fin);
                         }
                         idsol = txtsols.substring(debut,fin);
                         debut = fin + 1;
                         c = txtsols.charAt(debut);
-                        while (c != '/') {
+                        while (c != ';') {
                             fin = fin + 1;
                             c = txtsols.charAt(fin);
                         }
@@ -237,14 +237,14 @@ public class Sauvegarde {
                     fin = 0;
                     while (txtplafonds.charAt(debut) != '@') {
                         c = txtplafonds.charAt(debut);
-                        while (c != '/') {
+                        while (c != ';') {
                             fin = fin + 1;
                             c = txtplafonds.charAt(fin);
                         }
                         idplafond = txtplafonds.substring(debut,fin);
                         debut = fin + 1;
                         c = txtplafonds.charAt(debut);
-                        while (c != '/') {
+                        while (c != ';') {
                             fin = fin + 1;
                             c = txtplafonds.charAt(fin);
                         }
@@ -258,70 +258,70 @@ public class Sauvegarde {
                     fin = 0;
                     while (txtpieces.charAt(debut) != '@') {
                         c = txtpieces.charAt(debut);
-                        while (c != '/') {
+                        while (c != ';') {
                             fin = fin + 1;
                             c = txtpieces.charAt(fin);
                         }
                         idpiece = txtpieces.substring(debut,fin);
                         debut = fin + 1;
                         c = txtpieces.charAt(debut);
-                        while (c != '/') {
+                        while (c != ';') {
                             fin = fin + 1;
                             c = txtpieces.charAt(fin);
                         }
                         idsol = txtpieces.substring(debut,fin);
                         debut = fin + 1;
                         c = txtpieces.charAt(debut);
-                        while (c != '/') {
+                        while (c != ';') {
                             fin = fin + 1;
                             c = txtpieces.charAt(fin);
                         }
                         idplafond = txtpieces.substring(debut,fin);
                         debut = fin + 1;
                         c = txtpieces.charAt(debut);
-                        while (c != '/') {
+                        while (c != ';') {
                             fin = fin + 1;
                             c = txtpieces.charAt(fin);
                         }
                         murhaut = txtpieces.substring(debut,fin);
                         debut = fin + 1;
                         c = txtpieces.charAt(debut);
-                        while (c != '/') {
+                        while (c != ';') {
                             fin = fin + 1;
                             c = txtpieces.charAt(fin);
                         }
                         murbas = txtpieces.substring(debut,fin);
                         debut = fin + 1;
                         c = txtpieces.charAt(debut);
-                        while (c != '/') {
+                        while (c != ';') {
                             fin = fin + 1;
                             c = txtpieces.charAt(fin);
                         }
                         murdroit = txtpieces.substring(debut,fin);
                         debut = fin + 1;
                         c = txtpieces.charAt(debut);
-                        while (c != '/') {
+                        while (c != ';') {
                             fin = fin + 1;
                             c = txtpieces.charAt(fin);
                         }
                         murgauche = txtpieces.substring(debut,fin);
                         debut = fin + 1;
                         c = txtpieces.charAt(debut);
-                        while (c != '/') {
+                        while (c != ';') {
                             fin = fin + 1;
                             c = txtpieces.charAt(fin);
                         }
                         etage = txtpieces.substring(debut,fin);
                         debut = fin + 1;
                         c = txtpieces.charAt(debut);
-                        while (c != '/') {
+                        while (c != ';') {
                             fin = fin + 1;
                             c = txtpieces.charAt(fin);
                         }
                         usage = txtpieces.substring(debut,fin);
                         debut = fin + 1;
                         c = txtpieces.charAt(debut);
-                        while (c != '/') {
+                        while (c != ';') {
                             fin = fin + 1;
                             c = txtpieces.charAt(fin);
                         }
@@ -335,14 +335,14 @@ public class Sauvegarde {
                     fin = 0;
                     while (txtappart.charAt(debut) != '@') {
                         c = txtappart.charAt(debut);
-                        while (c != '/') {
+                        while (c != ';') {
                             fin = fin + 1;
                             c = txtappart.charAt(fin);
                         }
                         idappart = txtappart.substring(debut,fin);
                         debut = fin + 1;     
                         c = txtappart.charAt(debut);
-                        while (c != '/') {
+                        while (c != ';') {
                             fin = fin + 1;
                             c = txtappart.charAt(fin);
                         }
@@ -356,49 +356,49 @@ public class Sauvegarde {
                     fin = 0;
                     while (txtouv.charAt(debut) != '@') {
                         c = txtouv.charAt(debut);
-                        while (c != '/') {
+                        while (c != ';') {
                             fin = fin + 1;
                             c = txtouv.charAt(fin);
                         }
                         idouv = txtouv.substring(debut,fin);
                         debut = fin + 1;
                         c = txtouv.charAt(debut);
-                        while (c != '/') {
+                        while (c != ';') {
                             fin = fin + 1;
                             c = txtouv.charAt(fin);
                         }
                         xd = txtouv.substring(debut,fin);
                         debut = fin + 1;
                         c = txtouv.charAt(debut);
-                        while (c != '/') {
+                        while (c != ';') {
                             fin = fin + 1;
                             c = txtouv.charAt(fin);
                         }
                         yd = txtouv.substring(debut,fin);
                         debut = fin + 1;
                         c = txtouv.charAt(debut);
-                        while (c != '/') {
+                        while (c != ';') {
                             fin = fin + 1;
                             c = txtouv.charAt(fin);
                         }
                         xf = txtouv.substring(debut,fin);
                         debut = fin + 1;
                         c = txtouv.charAt(debut);
-                        while (c != '/') {
+                        while (c != ';') {
                             fin = fin + 1;
                             c = txtouv.charAt(fin);
                         }
                         yf = txtouv.substring(debut,fin);
                         debut = fin + 1;
                         c = txtouv.charAt(debut);
-                        while (c != '/') {
+                        while (c != ';') {
                             fin = fin + 1;
                             c = txtouv.charAt(fin);
                         }
                         typeouv = txtouv.substring(debut,fin);
                         debut = fin + 1;
                         c = txtouv.charAt(debut);
-                        while (c != '/') {
+                        while (c != ';') {
                             fin = fin + 1;
                             c = txtouv.charAt(fin);
                         }
@@ -428,11 +428,11 @@ public class Sauvegarde {
                 bw.write("\n");
                 bw.write(Double.toString(Devis.echellelargeur));
                 bw.write("\n");
-                bw.write(Integer.toString(Devis.getBatiment().get(0).getidBatiment())+"/");
-                bw.write(Devis.getBatiment().get(0).gettypeBatiment()+"/");
-                bw.write(Integer.toString(Devis.getBatiment().get(0).getnbreNiveaux())+"/");
-                bw.write(Double.toString(Devis.largeur)+"/");
-                bw.write(Double.toString(Devis.hauteur)+"/");
+                bw.write(Integer.toString(Devis.getBatiment().get(0).getidBatiment())+";");
+                bw.write(Devis.getBatiment().get(0).gettypeBatiment()+";");
+                bw.write(Integer.toString(Devis.getBatiment().get(0).getnbreNiveaux())+";");
+                bw.write(Double.toString(Devis.largeur)+";");
+                bw.write(Double.toString(Devis.hauteur)+";");
                 bw.write("@");
                 bw.write("\n");
                 //On parcourt la liste d'etage
@@ -441,74 +441,74 @@ public class Sauvegarde {
                     bw.write("\n");
                     bw.write(Integer.toString(etage.getetape()));
                     bw.write("\n");
-                    //On parcout la liste de coins dans l'etage et on écrit chaque coordonnée
+                    //On parcourt la liste de coins dans l'etage et on écrit chaque coordonnée
                     for (Coin coin : etage.getCoin()) {
-                        bw.write(Integer.toString(coin.getIdcoin())+"/");
-                        bw.write(Double.toString(coin.getX())+"/");
-                        bw.write(Double.toString(coin.getY())+"/");
-                        bw.write(Integer.toString(coin.getIdetage())+"/");
+                        bw.write(Integer.toString(coin.getIdcoin())+";");
+                        bw.write(Double.toString(coin.getX())+";");
+                        bw.write(Double.toString(coin.getY())+";");
+                        bw.write(Integer.toString(coin.getIdetage())+";");
                     }
                     bw.write("@");
                     bw.write("\n");
                     for (Revetement revetement : etage.getRevetement()) {
-                        bw.write(Integer.toString(revetement.getIdRevetement())+"/");
-                        bw.write(revetement.getTypeRevetement()+"/");
-                        bw.write(Integer.toString(revetement.getMur())+"/");
-                        bw.write(Integer.toString(revetement.getSol())+"/");
-                        bw.write(Integer.toString(revetement.getPlafond())+"/");
-                        bw.write(Double.toString(revetement.getPrix())+"/");
+                        bw.write(Integer.toString(revetement.getIdRevetement())+";");
+                        bw.write(revetement.getTypeRevetement()+";");
+                        bw.write(Integer.toString(revetement.getMur())+";");
+                        bw.write(Integer.toString(revetement.getSol())+";");
+                        bw.write(Integer.toString(revetement.getPlafond())+";");
+                        bw.write(Double.toString(revetement.getPrix())+";");
                     }
                     bw.write("@");
                     bw.write("\n");
                     for (Mur mur : etage.getMur()) {
-                        bw.write(Integer.toString(mur.getidMur())+"/");
-                        bw.write(Integer.toString(mur.getDepart().getIdcoin())+"/");
-                        bw.write(Integer.toString(mur.getArrivee().getIdcoin())+"/");
-                        bw.write(Integer.toString(mur.getIdetage())+"/");
-                        bw.write(Integer.toString(mur.getRevetement().getIdRevetement())+"/");
+                        bw.write(Integer.toString(mur.getidMur())+";");
+                        bw.write(Integer.toString(mur.getDepart().getIdcoin())+";");
+                        bw.write(Integer.toString(mur.getArrivee().getIdcoin())+";");
+                        bw.write(Integer.toString(mur.getIdetage())+";");
+                        bw.write(Integer.toString(mur.getRevetement().getIdRevetement())+";");
                     }
                     bw.write("@");
                     bw.write("\n");
                     for (Sol sol : etage.getSol()) {
-                        bw.write(Integer.toString(sol.getidsol())+"/");
-                        bw.write(Integer.toString(sol.getRevetement().getIdRevetement())+"/");
+                        bw.write(Integer.toString(sol.getidsol())+";");
+                        bw.write(Integer.toString(sol.getRevetement().getIdRevetement())+";");
                     }
                     bw.write("@");
                     bw.write("\n");
                     for (Plafond plafond : etage.getPlafond()) {
-                        bw.write(Integer.toString(plafond.getidplafond())+"/");
-                        bw.write(Integer.toString(plafond.getRevetement().getIdRevetement())+"/");
+                        bw.write(Integer.toString(plafond.getidplafond())+";");
+                        bw.write(Integer.toString(plafond.getRevetement().getIdRevetement())+";");
                     }
                     bw.write("@");
                     bw.write("\n");
                     for (Piece piece : etage.getPiece()) {
-                        bw.write(Integer.toString(piece.getidpiece())+"/");
-                        bw.write(Integer.toString(piece.getSol().getidsol())+"/");
-                        bw.write(Integer.toString(piece.getPlafond().getidplafond())+"/");
-                        bw.write(Integer.toString(piece.getMurHaut().getidMur())+"/");
-                        bw.write(Integer.toString(piece.getMurBas().getidMur())+"/");
-                        bw.write(Integer.toString(piece.getMurDroit().getidMur())+"/");
-                        bw.write(Integer.toString(piece.getMurGauche().getidMur())+"/");
-                        bw.write(Integer.toString(piece.getidetage())+"/");
-                        bw.write(piece.getUsage()+"/");
-                        bw.write(piece.getAppart()+"/");
+                        bw.write(Integer.toString(piece.getidpiece())+";");
+                        bw.write(Integer.toString(piece.getSol().getidsol())+";");
+                        bw.write(Integer.toString(piece.getPlafond().getidplafond())+";");
+                        bw.write(Integer.toString(piece.getMurHaut().getidMur())+";");
+                        bw.write(Integer.toString(piece.getMurBas().getidMur())+";");
+                        bw.write(Integer.toString(piece.getMurDroit().getidMur())+";");
+                        bw.write(Integer.toString(piece.getMurGauche().getidMur())+";");
+                        bw.write(Integer.toString(piece.getidetage())+";");
+                        bw.write(piece.getUsage()+";");
+                        bw.write(piece.getAppart()+";");
                     }
                     bw.write("@"); 
                     bw.write("\n");
                     for (Appartement appartement : etage.getAppartement()) {
-                        bw.write(Integer.toString(appartement.getidAppart())+"/");
-                        bw.write(Integer.toString(appartement.getNbpiece())+"/");
+                        bw.write(Integer.toString(appartement.getidAppart())+";");
+                        bw.write(Integer.toString(appartement.getNbpiece())+";");
                     }
                     bw.write("@"); 
                     bw.write("\n");
                     for (Ouverture ouverture : etage.getOuverture()) {
-                        bw.write(Integer.toString(ouverture.getidouv())+"/");
-                        bw.write(Double.toString(ouverture.getXd())+"/");
-                        bw.write(Double.toString(ouverture.getYd())+"/");
-                        bw.write(Double.toString(ouverture.getXf())+"/");
-                        bw.write(Double.toString(ouverture.getYf())+"/");
-                        bw.write(ouverture.getTypeouverture()+"/");
-                        bw.write(Integer.toString(ouverture.getIdetage())+"/");
+                        bw.write(Integer.toString(ouverture.getidouv())+";");
+                        bw.write(Double.toString(ouverture.getXd())+";");
+                        bw.write(Double.toString(ouverture.getYd())+";");
+                        bw.write(Double.toString(ouverture.getXf())+";");
+                        bw.write(Double.toString(ouverture.getYf())+";");
+                        bw.write(ouverture.getTypeouverture()+";");
+                        bw.write(Integer.toString(ouverture.getIdetage())+";");
                     }
                     bw.write("@"); 
                     bw.write("\n");
