@@ -253,7 +253,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
         
         
         
-        Button validation = Bouton.creationbouton("Valider", largeur*1/4+20, hauteur - 75, () -> {
+        Button validation = Bouton.creationbouton("Valider", largeur*1/4-90, 65, () -> {
             switch (etage.getetape()) {
                 case 3 -> {
                     if (appart()+1==getNbpiece()){
@@ -278,7 +278,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
             }
         });
         
-        Button FIN = Bouton.creationbouton("FIN", largeur*1/4-25, hauteur - 200, () -> {
+        Button FIN = Bouton.creationbouton("FIN",largeur*1/4-75,  20, () -> {
             if ((getNbSurface())==getRev()){
                 etage.setEtape(7);
             }
