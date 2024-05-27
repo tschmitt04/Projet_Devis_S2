@@ -1,9 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package fr.insa.schmitt.projet_devis_s2;
-
 
 import java.util.ArrayList;
 //creation de la class etage avec association de differente liste pour definir la composition de l'etage

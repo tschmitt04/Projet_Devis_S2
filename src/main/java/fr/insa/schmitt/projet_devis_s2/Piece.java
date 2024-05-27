@@ -1,4 +1,5 @@
 package fr.insa.schmitt.projet_devis_s2;
+
 import java.util.ArrayList;
 
 public class Piece {

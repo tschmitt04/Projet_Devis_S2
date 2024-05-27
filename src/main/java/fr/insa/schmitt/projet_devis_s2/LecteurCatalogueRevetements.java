@@ -1,13 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package fr.insa.schmitt.projet_devis_s2;
 
-/**
- *
- * @author Elève
- */
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;

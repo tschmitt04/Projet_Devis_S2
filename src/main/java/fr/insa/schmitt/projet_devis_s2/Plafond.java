@@ -1,4 +1,5 @@
 package fr.insa.schmitt.projet_devis_s2;
+
 public class Plafond {
     
     private static int lastId = 0;
