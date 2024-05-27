@@ -1,6 +1,6 @@
 package fr.insa.schmitt.projet_devis_s2;
 
-import static fr.insa.schmitt.projet_devis_s2.Interface.message;
+import static fr.insa.schmitt.projet_devis_s2.Interface.message1;
 import static fr.insa.schmitt.projet_devis_s2.Interface.message4;
 import java.text.DecimalFormat;
 import java.util.Optional;
@@ -43,7 +43,7 @@ import javafx.scene.text.Text;
 
 public final class Interface extends Pane implements EventHandler<MouseEvent> {
     
-    public static Label message;
+    public static Label message1;
     public static Label message2;
     public static Label message3;
     public static Label message4;
@@ -71,7 +71,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
         this.largeur=largeur;
         this.hauteur=hauteur;
         Bouton.creationboutons(largeur, hauteur);
-        message=new Label();
+        message1=new Label();
         message2=new Label();
         message3=new Label();
         message4=new Label();
@@ -187,9 +187,9 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
         imageView.setFitHeight(largeur*1/3);
        
         
-        message.setLayoutX(20);
-        message.setLayoutY(150);
-        message.setFont(new Font ("Papyrus", 17));
+        message1.setLayoutX(20);
+        message1.setLayoutY(150);
+        message1.setFont(new Font ("Papyrus", 17));
         
         message2.setLayoutX(20);
         message2.setLayoutY(hauteur*1/3+30);
@@ -252,7 +252,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                         Bouton.appart=false;
                         etage.setEtape(4);
                     }else{
-                        Interface.message.setText("Toutes les pièces n'ont pas\n été affectées à un appartement");
+                        Interface.text.setText("Toutes les pièces n'ont pas\n été affectées à un appartement");
                     }
                 }
                 
@@ -313,8 +313,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
             case 0 -> {
                 
                 text.setText("Veuillez créer la cage d'escalier");
-                message.setText("Veuillez créer la cage d'escalier");  
-                getChildren().addAll(message, devis, devisetage, rectangle1, text, message5); //Création de l'escalier uniquement pour le rdc
+                getChildren().addAll(message1, devis, devisetage, rectangle1, text, message5); //Création de l'escalier uniquement pour le rdc
             }
             
             
@@ -327,7 +326,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                     getChildren().add(button);
                 }
                 message2.setText("Surface totale : "+Math.round(Etage.getSurfacetot(etage))+" m²\n(arrondie de :"+Etage.getSurfacetot(etage)+" m²)\n \nSurface terrain : "+Math.round((Mur.getLargeur(etage.getMur().get(1))*Devis.getechellelongeur())*(Mur.getLargeur(etage.getMur().get(2))*Devis.getechellelargeur()))+" m²\n(arrondie de :"+(Mur.getLargeur(etage.getMur().get(1))*Devis.getechellelongeur())*(Mur.getLargeur(etage.getMur().get(2))*Devis.getechellelargeur())+" m²)");
-                getChildren().addAll(message, message2, devis, devisetage, idetage, Bouton.boutons.get(5), rectangle1, text, message5);
+                getChildren().addAll(message1, message2, devis, devisetage, idetage, Bouton.boutons.get(5), rectangle1, text, message5);
             }
             
             
@@ -369,9 +368,8 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
             
             
             case 3 -> {//menu déroulant des appartements
-                getChildren().addAll(boutonAppart, message,validation,idetage,Bouton.boutons.get(5),rectangle1, text, message5);
+                getChildren().addAll(boutonAppart, message1,validation,idetage,Bouton.boutons.get(5),rectangle1, text, message5);
                 text.setText("Cliquez sur le bouton Valider pour\npasser à l'étape suivante");
-                message.setText("Cliquez sur le bouton Valider pour\npasser à l'étape suivante");
             }
             
             
@@ -383,7 +381,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                     Button button=Bouton.boutons.get(i);
                     getChildren().add(button);
                 }
-                getChildren().addAll(message, devis, devisetage, idetage, Bouton.boutons.get(5), rectangle1, text, message5);
+                getChildren().addAll(message1, devis, devisetage, idetage, Bouton.boutons.get(5), rectangle1, text, message5);
             }
             
             
@@ -394,7 +392,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                 getChildren().add(Bouton.boutons.get(1));
                 getChildren().add(Bouton.boutons.get(3));
                 message2.setText("nombre de surface à revetir = "+getNbSurface()+"\nnombre de surface revetit = "+getRev());
-                getChildren().addAll(message, message2, devis, devisetage, idetage, Bouton.boutons.get(5), validation, rectangle1, text, message5);
+                getChildren().addAll(message1, message2, devis, devisetage, idetage, Bouton.boutons.get(5), validation, rectangle1, text, message5);
                 getChildren().add(imageView);
             }
             
@@ -407,7 +405,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                     getChildren().add(validation);
                 }
                 getChildren().add(Bouton.boutons.get(4));
-                getChildren().addAll(FIN, message, message2, devis, devisetage, idetage, rectangle1, text, message5);
+                getChildren().addAll(FIN, message1, message2, devis, devisetage, idetage, rectangle1, text, message5);
                 getChildren().add(imageView);
             }
             
@@ -611,7 +609,6 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                                 premierCoin = cote;
                                 selectedCoin = cote;
                                 text.setText("Veuillez maintenant placer un coin");
-                                message.setText("Veuillez maintenant placer un coin");
                                 redraw();
                                 break;
                         }
@@ -621,7 +618,6 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                 if (Math.abs(coin.getX()-e.getX())<20  &&  Math.abs(coin.getY()-e.getY())<20) {
                     if (coin==selectedCoin){
                         text.setText("Vous avez déjà sélectionner ce coin");
-                        message.setText("Vous avez déjà sélectionner ce coin");
                         /*message4.setText("ERREUR");
                             Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(4),event->{message4.setText(" ");}));
                             timeline.setCycleCount(1);
@@ -654,7 +650,6 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                     if (Math.abs(cote.getX()-e.getX())<20  &&  Math.abs(cote.getY()-e.getY())<20) {
                         premierCoin = cote;
                         selectedCoin = cote;         
-                        message.setText("Veuillez maintenant placer un coin\n sur un mur existant, ou sur un autre\n coin");
                         text.setText("Veuillez maintenant placer un coin\n sur un mur existant, ou sur un autre\n coin");
                         redraw();
                         /*message4.setText("ERREUR");
@@ -668,7 +663,6 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                 for (Coin coin : etage.getCoin()) {
                     if (Math.abs(coin.getX()-e.getX())<20  &&  Math.abs(coin.getY()-e.getY())<20) {
                         if (coin == selectedCoin) {
-                            message.setText("Vous avez déjà sélectionné ce coin là");
                             text.setText("Vous avez déjà sélectionné ce coin là");
                             Alert alert1 = new Alert(Alert.AlertType.NONE);
                             alert1.setTitle("ERREUR...");
@@ -776,7 +770,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
                             Bouton.piece=false;
                             redraw();
                         }else{
-                            message.setText("Le coin ne peut pas être placé à\n l'intérieur d'une pièce existante.");
+                            text.setText("Le coin ne peut pas être placé à\n l'intérieur d'une pièce existante.");
                             Alert alert1 = new Alert(Alert.AlertType.NONE);
                             alert1.setTitle("ERREUR...");
                             alert1.setHeaderText(null);
@@ -997,7 +991,7 @@ public final class Interface extends Pane implements EventHandler<MouseEvent> {
             for (Ouverture o : etage.getOuverture()){
                 if ((o.getXd()-o.getXf()==0)&&(y-largeurouv<o.getYf())  &&  (y+largeurouv>o.getYd())
                     || (o.getYd()-o.getYf()==0)&&(x-largeurouv<o.getXf())  &&  (x+largeurouv>o.getXd())){
-                    message.setText("Pas possible");
+                    text.setText("Pas possible");
                     paspossible = true;
                 }
             }

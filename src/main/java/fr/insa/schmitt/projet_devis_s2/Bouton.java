@@ -36,7 +36,7 @@ public class Bouton {
                     "Bureau");
             piece = true;
             Interface.premierCoin = null;
-            Interface.message.setText("Veuillez sélectionner un coin");
+            Interface.text.setText("Veuillez sélectionner un coin");
         });
         boutons.add(nouvellepièce);
         nouvellepièce.setPrefWidth(largeur/10);
